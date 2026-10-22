@@ -23,3 +23,7 @@ The canonical repository also retains local `private/original-v1` without a publ
 ## Limits retained
 
 This is a heterogeneous comparison, not a fitted credit term structure, isolated noncumulative premium, live ranking or calibration. STRE has no verified current quote. Public prices/option volatilities are synthetic; external data must be supplied locally under provider terms. Exact record-date ownership, 30/360 accrual, path-dependent triggers, make-whole tables, settlement elections and external production/PDE equivalence remain unimplemented. No license file yet; third-party ownership/notices remain applicable. No deployment, trades, private-account actions or recurring service was created.
+
+## Update 2026-10-22: license
+
+The MIT license was added in `LICENSE`. It covers this project's code only. Earlier statements in this record that no license file existed describe the state at publication.

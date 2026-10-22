@@ -80,6 +80,6 @@ Use the installed virtual environment's Python. This frozen tool supports the Oc
 
 ## License
 
-No license file yet. Third-party filings and statistics retain their own rights; no provider-data redistribution permission is claimed.
+[MIT](LICENSE). The license covers this project's code only. Third-party filings and statistics retain their own rights; no provider-data redistribution permission is claimed.
 
 Part of [Rahil Bhavan's projects](https://github.com/RahilBhavan).
