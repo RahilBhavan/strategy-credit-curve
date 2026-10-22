@@ -10,7 +10,7 @@ An offline Python research tool compares Strategy's five preferred securities an
 
 - Five preferred rows in seniority order: STRF, STRC, STRE, STRK and STRD, retaining currency, accumulation, call/put and conversion rights (`results/preferred.json`). These are scenario comparisons, not live rankings or a fitted credit term structure.
 - Six notes × nine volatility/spread combinations = **54 model scenarios** (`results/convertibles.json`). Under the central 60% volatility / 5% spread assumptions, public-demo values range from **$884.47 to $1,713.85 per $1,000 face**. Synthetic MSTR spot is $250; these are not observed note prices.
-- **39 tests pass**, covering source hashes and quotations, split-adjusted terms, independent analytic TF limits, convergence, coupon-date puts, offline CLI behavior, portable inputs and fetch retries.
+- **49 tests pass**, covering source hashes and quotations, split-adjusted terms, independent analytic TF limits, convergence, coupon-date puts, offline CLI behavior, portable inputs and fetch retries.
 
 ## How it works
 
@@ -58,6 +58,7 @@ Use the installed virtual environment's Python. This frozen tool supports the Oc
 - [Scope](docs/spec.md) — accepted functionality and sanitized publication.
 - [Methodology](docs/methodology.md) — equations, assumptions and omitted features.
 - [Sources](docs/sources.md) — public provenance and data-rights boundary.
+- [Input diagnostics](docs/diagnostics.md) — five-minute freshness and supplied-note comparison workflow.
 - [Market inputs](docs/market-inputs.md) — schema and local-input workflow.
 - [Verification](docs/verification.md) — checks and their limits.
 - [Review](docs/review.md) — demonstrated problems and repairs.

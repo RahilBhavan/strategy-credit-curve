@@ -3,6 +3,7 @@ import datetime as dt
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,8 +13,7 @@ CURRENCIES = {'MSTR': 'USD', 'STRF': 'USD', 'STRC': 'USD', 'STRE': 'EUR', 'STRK'
 
 def load(path=DEFAULT):
     """Validate schema v1. User files must supply their own source/as-of descriptions."""
-    raw = Path(path).read_bytes()
-    data = json.loads(raw)
+    data, digest = read_json(path)
     if not isinstance(data, dict) or type(data.get('schema_version')) is not int or data['schema_version'] != 1:
         raise ValueError('market inputs require schema_version 1')
     if data.get('kind') not in ('synthetic_scenario', 'user_supplied'):
@@ -27,8 +27,8 @@ def load(path=DEFAULT):
         quote = quotes[ticker]
         if not isinstance(quote, dict) or quote.get('currency') != currency:
             raise ValueError(f'{ticker} must be a {currency} quote')
-        _positive(quote.get('price'), f'{ticker} price')
-        _source(quote.get('source'), ticker)
+        validate_positive(quote.get('price'), f'{ticker} price')
+        validate_source(quote.get('source'), ticker)
         if quote['source']['as_of'] is not None and quote['source']['as_of'] > data['valuation_date']:
             raise ValueError(f'{ticker} observation is after the frozen valuation date')
         if data['kind'] == 'synthetic_scenario' and quote['source']['as_of'] is not None:
@@ -37,22 +37,22 @@ def load(path=DEFAULT):
     if not isinstance(vols, dict) or set(vols) != {'base', 'sensitivity', 'source'}:
         raise ValueError('strk_option_volatility requires base, sensitivity and source')
     for key in ('base', 'sensitivity'):
-        _positive(vols[key], f'{key} option volatility')
-    _source(vols['source'], 'option volatility')
+        validate_positive(vols[key], f'{key} option volatility')
+    validate_source(vols['source'], 'option volatility')
     if vols['source']['as_of'] is not None and vols['source']['as_of'] > data['valuation_date']:
         raise ValueError('option volatility observation is after the frozen valuation date')
     if data['kind'] == 'synthetic_scenario' and vols['source']['as_of'] is not None:
         raise ValueError('synthetic volatility has no observation date; use as_of null')
-    data['input_sha256'] = hashlib.sha256(raw).hexdigest()
+    data['input_sha256'] = digest
     return data
 
 
-def _positive(value, name):
+def validate_positive(value, name):
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value <= 0:
         raise ValueError(f'{name} must be finite and positive')
 
 
-def _source(source, name):
+def validate_source(source, name):
     if not isinstance(source, dict) or not isinstance(source.get('description'), str) or not source['description'].strip():
         raise ValueError(f'{name} requires a source description')
     for key in ('as_of', 'fetched_utc'):
@@ -61,11 +61,17 @@ def _source(source, name):
         if source[key] is not None and not isinstance(source[key], str):
             raise ValueError(f'{name} source {key} must be a string or null')
     if source['as_of'] is not None:
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', source['as_of']):
+            raise ValueError(f'{name} as_of must be YYYY-MM-DD')
         dt.date.fromisoformat(source['as_of'])
     if source['fetched_utc'] is not None:
         stamp = dt.datetime.fromisoformat(source['fetched_utc'].replace('Z', '+00:00'))
         if stamp.tzinfo is None or stamp.utcoffset() != dt.timedelta(0):
             raise ValueError('fetched_utc must carry the UTC timezone')
+        if 'T' not in source['fetched_utc']:
+            raise ValueError('fetched_utc must be an ISO datetime with T separator')
+        if source['as_of'] is not None and stamp.date().isoformat() < source['as_of']:
+            raise ValueError(f'{name} retrieval precedes observation date')
     if source.get('url') is not None:
         if not isinstance(source['url'], str) or not source['url'].startswith('https://'):
             raise ValueError('source URL must be an HTTPS string or null')
@@ -82,3 +88,21 @@ def provenance(data):
             'valuation_date': data['valuation_date'], 'input_sha256': data['input_sha256'],
             'interpretation': 'Synthetic prices/volatilities are authored assumptions, not market observations. '
                               'User-supplied observations remain the responsibility of their supplier.'}
+
+
+def read_json(path):
+    """Read auditable JSON without silent last-key-wins or nonstandard constants."""
+    raw = Path(path).read_bytes()
+
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f'duplicate JSON key: {key}')
+            result[key] = value
+        return result
+
+    def invalid(value):
+        raise ValueError(f'nonfinite JSON constant: {value}')
+
+    return json.loads(raw, object_pairs_hook=unique, parse_constant=invalid), hashlib.sha256(raw).hexdigest()
