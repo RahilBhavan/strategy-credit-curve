@@ -62,7 +62,7 @@ class PortableInputs(unittest.TestCase):
         self.assertEqual(stre['price_source']['as_of'], '2025-11-06')
         self.assertEqual(stre['price_source']['fetched_utc'], '2026-10-22T01:00:00Z')
         self.fixture['quotes']['STRE']['source']['as_of'] = '2026-10-22'
-        with self.assertRaisesRegex(ValueError, 'after the frozen'):
+        with self.assertRaisesRegex(ValueError, 'after valuation_date 2026-10-21.*--rates'):
             self.load(self.fixture)
 
     def test_cli_uses_user_file_to_change_all_six_note_values(self):

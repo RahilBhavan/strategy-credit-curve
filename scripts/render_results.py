@@ -1,16 +1,21 @@
-"""Render the reviewed scenario JSON as an accessible SVG table, using only stdlib."""
+"""Render the reviewed result JSON as an accessible SVG table and the README summary, using only stdlib."""
 import hashlib
 import json
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from credit_curve import summary  # noqa: E402  (stdlib-only module; no numpy needed)
+
+START, END = '<!-- preferred-summary:start -->', '<!-- preferred-summary:end -->'
 
 
 def render():
     source = ROOT / 'results/convertibles.json'
     data = json.loads(source.read_text())
     svg = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 940" role="img" aria-labelledby="title desc">',
-           '<title id="title">Six notes, nine assumed prices each</title>',
+           '<title id="title">Six notes, nine model values each</title>',
            '<desc id="desc">Model scenario minima, central assumptions and maxima per $1,000 face. These are not market quotes or confidence intervals.</desc>',
            '<rect width="760" height="940" fill="#F5F5EF"/>',
            '<g font-family="IBM Plex Sans, Arial, sans-serif" fill="#111214">']
@@ -19,7 +24,7 @@ def render():
         svg.append(f'<text x="{x}" y="{y}" font-size="{size}" text-anchor="{anchor}" font-weight="{weight}" fill="{fill}">{content}</text>')
 
     text(32, 46, 'RAHIL BHAVAN / BUILD NOTES', 28, fill='#52545A')
-    text(32, 104, 'Six notes, nine assumed prices each', 32, weight='600')
+    text(32, 104, 'Six notes, nine model values each', 32, weight='600')
     text(32, 150, 'Synthetic inputs • USD per $1,000 face', 28)
     text(32, 192, 'Contract/rate snapshot: 21 Oct 2026', 28, fill='#52545A')
     svg.append('<rect x="431" y="216" width="152" height="410" fill="#FFE500"/>')
@@ -47,6 +52,14 @@ def render():
     target.parent.mkdir(exist_ok=True)
     target.write_text('\n'.join(svg) + '\n')
     print(f'{target.relative_to(ROOT)}; input SHA-256 {hashlib.sha256(source.read_bytes()).hexdigest()}')
+    readme = ROOT / 'README.md'
+    body = readme.read_text()
+    if START not in body or END not in body:
+        raise SystemExit('README.md lacks the preferred-summary markers')
+    table = summary.markdown(json.loads((ROOT / 'results/preferred.json').read_text()))
+    head, rest = body.split(START, 1)
+    readme.write_text(head + START + '\n' + table + '\n' + END + rest.split(END, 1)[1])
+    print('README.md preferred summary regenerated from results/preferred.json')
 
 
 if __name__ == '__main__':

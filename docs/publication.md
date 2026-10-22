@@ -27,3 +27,7 @@ This is a heterogeneous comparison, not a fitted credit term structure, isolated
 ## Update 2026-10-22: license
 
 The MIT license was added in `LICENSE`. It covers this project's code only. Earlier statements in this record that no license file existed describe the state at publication.
+
+## Update 2026-10-22: reader-test fixes
+
+A cold-reader test found that later-dated user marks were rejected and the key outputs were hard to find. The CLI now accepts a user `valuation_date` with a validated rates file (`--rates`), optional per-note volatility/spread inputs, and prints a summary table; the README preferred table is generated from `results/preferred.json`. The October 21 snapshot remains the default, and its public numbers are unchanged. Hosted CI for the pushed commit is the verification record; see `git log` for the SHA.

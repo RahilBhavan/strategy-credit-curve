@@ -8,12 +8,23 @@ The public example `data/scenarios/market-inputs.json` is independently authored
 
 - `schema_version`: integer 1.
 - `kind`: `synthetic_scenario` or `user_supplied`. A user-supplied file is never independently certified as observed or live by the tool.
-- `valuation_date`: `2026-10-21`. The frozen term/rate comparison rejects other dates.
+- `valuation_date`: ISO date on or after `2026-10-21` (the contract-terms snapshot) and before the earliest note maturity. Any date other than 2026-10-21 requires a rates file (below); contract terms stay at the October 21 snapshot.
 - `quotes`: exactly MSTR, STRF, STRC, STRE, STRK and STRD. Each has a positive finite `price`, correct `currency` (STRE EUR, others USD) and `source`.
 - `strk_option_volatility`: positive finite `base` and `sensitivity` values, plus `source`. These feed finite 5/10/20-year call scenarios; they are not a fitted perpetual-option model.
+- `note_assumptions` (optional): per-note `volatility` (decimal, 0.6 = 60%, range 0.01–5), `credit_spread` (decimal, 0.05 = 500 bp, range 0–0.5) and `source`, for any subset of 2028, 2029, 2030A, 2030B, 2031 and 2032. Each supplied pair is valued in `supplied_assumption` beside the unchanged nine-point grid and appears in the terminal summary.
 - Each `source` requires a nonempty `description`, `as_of` (ISO observation date or null), `fetched_utc` (UTC timestamp or null), and an optional HTTPS `url` or null. Synthetic values require null observation dates. Observation dates after valuation are rejected; retrieval may occur later. Include accurate rights/source context in descriptions, never secrets or credential-bearing URLs.
 
 An input file's byte SHA-256 is recorded in each output. Quotes retain their own source descriptions and dates; note outputs include MSTR spot provenance. Synthetic inputs are labeled, and no row is eligible for a verified live ranking. User observations older than valuation are explicitly stale; missing observation dates produce null staleness rather than an invented date. Invalid data exits 2 before output writes. Inputs that make STRK's assumed option adjustment leave a nonpositive straight-price proxy are rejected explicitly.
+
+## Rates file, schema version 1
+
+The bundled rates come from the attributed October 21, 2026 public snapshot. For any other valuation date pass `--rates FILE` (also accepted by `credit_curve.diagnostics`). The example `data/scenarios/later-date/rates.json` is synthetic. Keys must be exactly:
+
+- `schema_version`: integer 1. `kind`: `synthetic_scenario` or `user_supplied`. `valuation_date`: must equal the market file's date.
+- `ust_par_yield`: `tenors`, a map from years (`"0.25"`, `"1"`, `"30"`) to Treasury par bond-equivalent yields as decimals, plus `source`. The 30-year tenor and one tenor of 1 year or less are required; other maturities are linearly interpolated.
+- `sofr`, `ecb_aaa_spot_30y` (continuously compounded) and `eurusd` (USD per EUR): each `{"rate": number, "source": {...}}`.
+
+Rates must lie in [-0.05, 0.5] and EUR/USD in [0.2, 5]; a value such as `4.5` is rejected with a reminder that 4.5% is `0.045`. Sources follow the same rules as quotes: synthetic files use null observation dates and observations after the valuation date are rejected. The output records the rates kind, date and file SHA-256 under `market_inputs.rates`.
 
 ## Use locally
 

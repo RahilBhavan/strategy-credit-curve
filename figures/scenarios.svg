@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 940" role="img" aria-labelledby="title desc">
-<title id="title">Six notes, nine assumed prices each</title>
+<title id="title">Six notes, nine model values each</title>
 <desc id="desc">Model scenario minima, central assumptions and maxima per $1,000 face. These are not market quotes or confidence intervals.</desc>
 <rect width="760" height="940" fill="#F5F5EF"/>
 <g font-family="IBM Plex Sans, Arial, sans-serif" fill="#111214">
 <text x="32" y="46" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">RAHIL BHAVAN / BUILD NOTES</text>
-<text x="32" y="104" font-size="32" text-anchor="start" font-weight="600" fill="#111214">Six notes, nine assumed prices each</text>
+<text x="32" y="104" font-size="32" text-anchor="start" font-weight="600" fill="#111214">Six notes, nine model values each</text>
 <text x="32" y="150" font-size="28" text-anchor="start" font-weight="400" fill="#111214">Synthetic inputs • USD per $1,000 face</text>
 <text x="32" y="192" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Contract/rate snapshot: 21 Oct 2026</text>
 <rect x="431" y="216" width="152" height="410" fill="#FFE500"/>

@@ -4,7 +4,7 @@ Purpose: record tested public behavior, distinct from source observations and mo
 
 ## Reproduction
 
-Use the README commands: install `numpy==2.5.4`, run `scripts/restore_data.py`, run `python -m unittest discover -s tests -v`, then `python -m credit_curve.run` and `python scripts/render_results.py`. The suite passes **39 tests** with Python 3.13.15 and 3.14.7. No provider credentials are used. Tests/demo use no network after package installation.
+Use the README commands: install `numpy==2.5.4`, run `scripts/restore_data.py`, run `python -m unittest discover -s tests -v`, then `python -m credit_curve.run` and `python scripts/render_results.py`. The suite passes **58 tests** with Python 3.13.15. No provider credentials are used. Tests/demo use no network after package installation.
 
 The default CLI emits five preferred rows and six nine-scenario grids using **synthetic** market inputs. It records kind, valuation date, input-file hash and per-input observation/retrieval provenance. Same-environment public outputs and the SVG are byte-repeatable. Across platforms, saved floating references use relative tolerance 1e-12 and absolute tolerance 1e-10, with actual/reference/delta paths printed. JSON types, schema, text, counts and order remain exact. A checker regression rejects meaningful numerical/schema drift; independent analytic invariants remain unchanged. The figure shows grid extrema, not confidence intervals.
 
@@ -17,6 +17,9 @@ The default CLI emits five preferred rows and six nine-scenario grids using **sy
 - Restoration is idempotent on an independently authored fixture, refuses changed data and rejects hash corruption. Actual clean-clone restoration reconstructs the 34 large SEC sources; manifest tests verify all 67 public responses.
 - Additional regressions reprice valid STRC inputs at $25/$250 and verify their yields against independent cash-flow PV; numeric provenance fields must exit 2 before writes.
 - Portable input tests reject malformed schemas, missing instruments, wrong currencies, booleans/nonfinite/nonpositive prices, zero volatility, synthetic observation dates and future observations. User dates remain separate from retrieval timestamps. A custom-input CLI run with MSTR 300 changes the central value for all six notes while remaining offline. Impossible STRK option adjustments fail explicitly.
+
+- Valuation-date tests run the CLI on the synthetic October 22 example with a rates file and check that the 30-year benchmark and spreads come from that file and that its hash is recorded. A later date without `--rates` exits 2 before writing, with a message naming the fix. Rates files reject percent-unit values, a missing 30-year tenor, mismatched dates, unknown keys, synthetic observation dates and future observations; dates before the terms snapshot or on a note's maturity are rejected. User marks dated October 22 run through diagnostics.
+- Per-note volatility/spread inputs equal a direct tree price at those values, leave all nine grid values unchanged, and reject percent units and unknown notes. The terminal summary and the README preferred table are generated from the results; a test and CI check that the README table matches `results/preferred.json`.
 
 CI pins immutable checkout/setup-python commits, Python 3.13.15 and NumPy 2.5.4. It uses `contents: read`, no persisted checkout credentials, a ten-minute timeout, restoration, the full offline suite, Python compilation and figure reproduction. No static typechecker is configured in this Python project. No schedules, paid services or deployment run.
 

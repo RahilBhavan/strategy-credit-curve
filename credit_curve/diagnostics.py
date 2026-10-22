@@ -16,7 +16,8 @@ def load_marks(path, valuation_date):
     if not isinstance(data, dict) or type(data.get('schema_version')) is not int or data['schema_version'] != 1:
         raise ValueError('note marks require schema_version 1')
     if data.get('kind') != 'user_supplied' or data.get('valuation_date') != valuation_date:
-        raise ValueError('note marks require kind user_supplied and the frozen valuation_date')
+        raise ValueError(f'note marks require kind user_supplied and valuation_date {valuation_date} '
+                         '(the market-input valuation date)')
     marks = data.get('marks')
     if not isinstance(marks, dict) or not set(marks) <= set(notes.NAMES):
         raise ValueError('marks must be a subset of supported note names')
@@ -30,12 +31,13 @@ def load_marks(path, valuation_date):
         inputs.validate_positive(mark.get('price'), f'{name} price')
         inputs.validate_source(mark.get('source'), name)
         if mark['source']['as_of'] is not None and mark['source']['as_of'] > valuation_date:
-            raise ValueError(f'{name} observation is after the frozen valuation date')
+            raise ValueError(f'{name} observation {mark["source"]["as_of"]} is after valuation_date {valuation_date}; '
+                             'set both files to that date and pass --rates for it')
     return {'input_sha256': digest, 'marks': marks, 'kind': data['kind']}
 
 
 def assess(source, kind, valuation_date):
-    """Calendar-day policy relative to the snapshot, independent of today's clock."""
+    """Calendar-day policy relative to the valuation date, independent of today's clock."""
     observed = source['as_of']
     age = None if observed is None else (dt.date.fromisoformat(valuation_date) - dt.date.fromisoformat(observed)).days
     reasons = []
@@ -96,6 +98,7 @@ def build(data, marks=None, steps=600):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--market-input', type=Path, default=inputs.DEFAULT)
+    parser.add_argument('--rates', type=Path, help='schema-v1 benchmark rates for a valuation date other than 2026-10-21')
     parser.add_argument('--note-marks', type=Path, help='local user-supplied schema-v1 note marks')
     parser.add_argument('--out', type=Path, required=True, help='diagnostic JSON path')
     parser.add_argument('--steps', type=int, default=600)
@@ -104,10 +107,10 @@ def main():
     if not 2 <= args.steps <= 10000:
         parser.error('steps must lie in [2,10000]')
     # A report must never overwrite either of its evidence files (including symlinks).
-    if args.out.resolve() in {p.resolve() for p in (args.market_input, args.note_marks) if p is not None}:
+    if args.out.resolve() in {p.resolve() for p in (args.market_input, args.rates, args.note_marks) if p is not None}:
         parser.error('output must differ from input files')
     try:
-        data = inputs.load(args.market_input)
+        data = inputs.load(args.market_input, args.rates)
         marks = None if args.note_marks is None else load_marks(args.note_marks, data['valuation_date'])
         report = build(data, marks, args.steps)
         body = json.dumps(report, sort_keys=True, indent=2, allow_nan=False) + '\n'

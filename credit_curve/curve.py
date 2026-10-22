@@ -1,4 +1,4 @@
-"""Strategy preferred comparison using explicit market scenarios dated 2026-10-21.
+"""Strategy preferred comparison at a validated valuation date (bundled default: 2026-10-21).
 
 Each preferred's yield is compared with a benchmark of matching currency and rate type:
 fixed-rate USD perpetuals against the 30-year Treasury par yield, STRC (variable rate, reset by
@@ -49,17 +49,18 @@ def instruments():
     return rows
 
 
-def benchmarks():
-    curve, csrc = market.treasury_curve()
-    s, ssrc = market.sofr()
-    e30, esrc = market.ecb_aaa_spot("30Y")
-    fx, fxsrc = market.eurusd()
+def benchmarks(rates):
+    """Effective-annual benchmarks from one rates snapshot (bundled or user-supplied)."""
+    curve, csrc = rates["ust_par_yield"]["tenors"], rates["ust_par_yield"]["source"]
+    s = rates["sofr"]["rate"]
+    e30 = rates["ecb_aaa_spot_30y"]["rate"]
+    ust10 = curve[10] if 10 in curve else market.interp(curve, 10)
     return {
         "ust30": {"bey": curve[30], "effective": preferred.bey_to_effective(curve[30]), "source": csrc},
-        "ust10": {"bey": curve[10], "effective": preferred.bey_to_effective(curve[10]), "source": csrc},
-        "sofr": {"rate": s, "effective": (1 + s / 360 * 365 / 12) ** 12 - 1, "source": ssrc},
-        "eur30": {"cc": e30, "effective": preferred.cc_to_effective(e30), "source": esrc},
-        "eurusd": {"rate": fx, "source": fxsrc},
+        "ust10": {"bey": ust10, "effective": preferred.bey_to_effective(ust10), "source": csrc},
+        "sofr": {"rate": s, "effective": (1 + s / 360 * 365 / 12) ** 12 - 1, "source": rates["sofr"]["source"]},
+        "eur30": {"cc": e30, "effective": preferred.cc_to_effective(e30), "source": rates["ecb_aaa_spot_30y"]["source"]},
+        "eurusd": {"rate": rates["eurusd"]["rate"], "source": rates["eurusd"]["source"]},
         "curve": curve,
     }
 
@@ -77,7 +78,7 @@ def strk_option(spot, rate_curve, inputs):
 
 def build(inputs=None):
     inputs = market_inputs.load() if inputs is None else inputs
-    b = benchmarks()
+    b = benchmarks(inputs["rates"])
     mstr = market_inputs.quote(inputs, "MSTR")
     rows = instruments()
     for row in rows:
@@ -116,6 +117,7 @@ def build(inputs=None):
             row["min_perpetual_and_1y_call_scenario"] = row["effective_yield"]
     strk = next(r for r in rows if r["ticker"] == "STRK")
     opt = strk_option(mstr["price"], b["curve"], inputs)
+    strk["conversion_parity"] = strk["conversion_rate"] * mstr["price"]
     strk["option"] = opt
     strk["option_value"] = opt["base"]
     strk["straight_price"] = strk["price"] - opt["base"]
@@ -126,8 +128,8 @@ def build(inputs=None):
     strk["straight_spread_range_bp"] = sorted(
         1e4 * (preferred.effective_annual(8.0, strk["price"] - v, 4) - strk["benchmark_effective"])
         for v in opt["values"].values())[::len(opt["values"]) - 1]
-    return {"as_of": "2026-10-21", "market_inputs": market_inputs.provenance(inputs), "kind": "heterogeneous_perpetual_comparison_not_credit_term_structure",
-            "daily_dividend_amendment": "pending Oct 28 vote; not enacted as of Oct 21", "mstr": mstr, "benchmarks": {k: v for k, v in b.items() if k != "curve"},
+    return {"as_of": inputs["valuation_date"], "market_inputs": market_inputs.provenance(inputs), "kind": "heterogeneous_perpetual_comparison_not_credit_term_structure",
+            "daily_dividend_amendment": "pending Oct 28 vote; not enacted in the 2026-10-21 terms snapshot", "mstr": mstr, "benchmarks": {k: v for k, v in b.items() if k != "curve"},
             "rows": rows, "strd": strd_discount(rows)}
 
 

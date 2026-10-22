@@ -11,15 +11,22 @@ DEFAULT = ROOT / 'data/scenarios/market-inputs.json'
 CURRENCIES = {'MSTR': 'USD', 'STRF': 'USD', 'STRC': 'USD', 'STRE': 'EUR', 'STRK': 'USD', 'STRD': 'USD'}
 
 
-def load(path=DEFAULT):
-    """Validate schema v1. User files must supply their own source/as-of descriptions."""
+TERMS_SNAPSHOT = '2026-10-21'
+NOTE_NAMES = ('2028', '2029', '2030A', '2030B', '2031', '2032')
+
+
+def load(path=DEFAULT, rates_path=None):
+    """Validate schema v1 and attach the benchmark-rate snapshot for its valuation date.
+
+    Without ``rates_path`` only the bundled 2026-10-21 rates exist, so other dates need a rates file."""
+    from . import rates as benchmark_rates  # rates validates sources with this module's helpers
+
     data, digest = read_json(path)
     if not isinstance(data, dict) or type(data.get('schema_version')) is not int or data['schema_version'] != 1:
         raise ValueError('market inputs require schema_version 1')
     if data.get('kind') not in ('synthetic_scenario', 'user_supplied'):
         raise ValueError('kind must be synthetic_scenario or user_supplied')
-    if data.get('valuation_date') != '2026-10-21':
-        raise ValueError('this frozen contract/rate comparison supports valuation_date 2026-10-21 only')
+    day = valuation_date(data.get('valuation_date'), 'market inputs')
     quotes = data.get('quotes')
     if not isinstance(quotes, dict) or set(quotes) != set(CURRENCIES):
         raise ValueError('quotes must contain exactly MSTR, STRF, STRC, STRE, STRK and STRD')
@@ -28,23 +35,67 @@ def load(path=DEFAULT):
         if not isinstance(quote, dict) or quote.get('currency') != currency:
             raise ValueError(f'{ticker} must be a {currency} quote')
         validate_positive(quote.get('price'), f'{ticker} price')
-        validate_source(quote.get('source'), ticker)
-        if quote['source']['as_of'] is not None and quote['source']['as_of'] > data['valuation_date']:
-            raise ValueError(f'{ticker} observation is after the frozen valuation date')
-        if data['kind'] == 'synthetic_scenario' and quote['source']['as_of'] is not None:
-            raise ValueError('synthetic prices have no market observation date; use as_of null')
+        observed_by(quote.get('source'), ticker, data['kind'], day)
     vols = data.get('strk_option_volatility')
     if not isinstance(vols, dict) or set(vols) != {'base', 'sensitivity', 'source'}:
         raise ValueError('strk_option_volatility requires base, sensitivity and source')
     for key in ('base', 'sensitivity'):
         validate_positive(vols[key], f'{key} option volatility')
-    validate_source(vols['source'], 'option volatility')
-    if vols['source']['as_of'] is not None and vols['source']['as_of'] > data['valuation_date']:
-        raise ValueError('option volatility observation is after the frozen valuation date')
-    if data['kind'] == 'synthetic_scenario' and vols['source']['as_of'] is not None:
-        raise ValueError('synthetic volatility has no observation date; use as_of null')
+    observed_by(vols['source'], 'option volatility', data['kind'], day)
+    data['note_assumptions'] = note_assumptions(data.get('note_assumptions'), data['kind'], day)
+    if rates_path is not None:
+        rates = benchmark_rates.load(rates_path)
+        if rates['valuation_date'] != day:
+            raise ValueError(f'rates file valuation_date {rates["valuation_date"]} must equal market inputs '
+                             f'valuation_date {day}')
+    elif day != benchmark_rates.FROZEN_DATE:
+        raise ValueError(f'valuation_date {day} needs benchmark rates for that date: pass --rates FILE '
+                         f'(schema in docs/market-inputs.md). The bundled snapshot covers '
+                         f'{benchmark_rates.FROZEN_DATE} only.')
+    else:
+        rates = benchmark_rates.frozen()
     data['input_sha256'] = digest
+    data['rates'] = rates
     return data
+
+
+def valuation_date(value, name):
+    """ISO date on or after the contract-terms snapshot; earlier terms are not reconstructed."""
+    if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
+        raise ValueError(f'{name} valuation_date must be YYYY-MM-DD')
+    dt.date.fromisoformat(value)
+    if value < TERMS_SNAPSHOT:
+        raise ValueError(f'{name} valuation_date {value} precedes the {TERMS_SNAPSHOT} contract-terms snapshot; '
+                         'historical terms are not reconstructed')
+    return value
+
+
+def observed_by(source, name, kind, day):
+    validate_source(source, name)
+    if source['as_of'] is not None and source['as_of'] > day:
+        raise ValueError(f'{name} observation {source["as_of"]} is after valuation_date {day}; '
+                         'set valuation_date to that date and pass --rates for it')
+    if kind == 'synthetic_scenario' and source['as_of'] is not None:
+        raise ValueError(f'synthetic {name} has no market observation date; use as_of null')
+
+
+def note_assumptions(value, kind, day):
+    """Optional per-note implied volatility and credit spread; the default grid always runs too."""
+    if value is None:
+        return {}
+    if not isinstance(value, dict) or not set(value) <= set(NOTE_NAMES):
+        raise ValueError(f'note_assumptions keys must be a subset of {", ".join(NOTE_NAMES)}')
+    for name, item in value.items():
+        if not isinstance(item, dict) or set(item) != {'volatility', 'credit_spread', 'source'}:
+            raise ValueError(f'note_assumptions {name} requires volatility, credit_spread and source')
+        vol, spread = item['volatility'], item['credit_spread']
+        for label, number, lo, hi in (('volatility', vol, 0.01, 5.0), ('credit_spread', spread, 0.0, 0.5)):
+            if isinstance(number, bool) or not isinstance(number, (int, float)) or not math.isfinite(number) \
+                    or not lo <= number <= hi:
+                raise ValueError(f'note_assumptions {name} {label} must be a decimal in [{lo}, {hi}] '
+                                 '(60% volatility is 0.6; 500 bp spread is 0.05)')
+        observed_by(item['source'], f'{name} note assumption', kind, day)
+    return value
 
 
 def validate_positive(value, name):
@@ -84,8 +135,12 @@ def quote(data, ticker):
 
 
 def provenance(data):
+    from . import rates as benchmark_rates
+
     return {'schema_version': data['schema_version'], 'kind': data['kind'],
             'valuation_date': data['valuation_date'], 'input_sha256': data['input_sha256'],
+            'rates': benchmark_rates.provenance(data['rates']),
+            'contract_terms_snapshot': TERMS_SNAPSHOT,
             'interpretation': 'Synthetic prices/volatilities are authored assumptions, not market observations. '
                               'User-supplied observations remain the responsibility of their supplier.'}
 

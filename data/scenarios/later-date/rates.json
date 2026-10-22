@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kind": "synthetic_scenario",
+  "valuation_date": "2026-10-22",
+  "ust_par_yield": {
+    "tenors": {
+      "0.25": 0.042,
+      "1": 0.045,
+      "2": 0.048,
+      "5": 0.05,
+      "10": 0.051,
+      "30": 0.054
+    },
+    "source": {
+      "description": "Independently authored illustrative rate; not an observed Treasury, NY Fed or ECB value",
+      "as_of": null,
+      "fetched_utc": null,
+      "url": null
+    }
+  },
+  "sofr": {
+    "rate": 0.039,
+    "source": {
+      "description": "Independently authored illustrative rate; not an observed Treasury, NY Fed or ECB value",
+      "as_of": null,
+      "fetched_utc": null,
+      "url": null
+    }
+  },
+  "ecb_aaa_spot_30y": {
+    "rate": 0.037,
+    "source": {
+      "description": "Independently authored illustrative rate; not an observed Treasury, NY Fed or ECB value",
+      "as_of": null,
+      "fetched_utc": null,
+      "url": null
+    }
+  },
+  "eurusd": {
+    "rate": 1.12,
+    "source": {
+      "description": "Independently authored illustrative rate; not an observed Treasury, NY Fed or ECB value",
+      "as_of": null,
+      "fetched_utc": null,
+      "url": null
+    }
+  }
+}

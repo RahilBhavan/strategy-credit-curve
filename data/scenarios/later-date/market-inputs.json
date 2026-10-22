@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "kind": "synthetic_scenario",
+  "valuation_date": "2026-10-22",
+  "quotes": {
+    "MSTR": {
+      "price": 250,
+      "currency": "USD",
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    },
+    "STRF": {
+      "price": 100,
+      "currency": "USD",
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    },
+    "STRC": {
+      "price": 100,
+      "currency": "USD",
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    },
+    "STRE": {
+      "price": 100,
+      "currency": "EUR",
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    },
+    "STRK": {
+      "price": 90,
+      "currency": "USD",
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    },
+    "STRD": {
+      "price": 85,
+      "currency": "USD",
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    }
+  },
+  "strk_option_volatility": {
+    "base": 0.6,
+    "sensitivity": 0.8,
+    "source": {
+      "description": "Independently authored illustrative input; not derived from a vendor quote",
+      "as_of": null,
+      "fetched_utc": null,
+      "url": null
+    }
+  },
+  "note_assumptions": {
+    "2029": {
+      "volatility": 0.55,
+      "credit_spread": 0.04,
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    },
+    "2030B": {
+      "volatility": 0.5,
+      "credit_spread": 0.045,
+      "source": {
+        "description": "Independently authored illustrative input; not derived from a vendor quote",
+        "as_of": null,
+        "fetched_utc": null,
+        "url": null
+      }
+    }
+  }
+}
