@@ -1,0 +1,98 @@
+{
+ "principal_outstanding_2026_06_30": {
+  "value": 2000000000,
+  "quote": "$ 2.00 billion aggregate principal amount of 0 % Convertible Senior Notes due 2030 (the \u201c2030B Convertible Notes\u201d);",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "coupon_rate": {
+  "value": 0.0,
+  "quote": "The notes do not bear regular interest, and the principal amount of the notes does not accrete. However, special interest and additional interest may accrue on the notes at a rate per annum not exceeding 0.50%",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "interest_payment_dates": {
+  "value": [
+   "03-01",
+   "09-01"
+  ],
+  "quote": "June 1 & December 1 | March 15 & September 15 | March 1 & September 1 | March 15 & September 15 | June 15 & December 15 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "maturity_date": {
+  "value": "2030-03-01",
+  "quote": "The notes will mature on March 1, 2030, unless earlier repurchased, redeemed or converted. Before December 3, 2029, noteholders have the right to convert their notes only upon the occurrence of certain events.",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "conversion_rate_and_price_per_10q": {
+  "value": {
+   "rate": 2.31,
+   "price": 433.43
+  },
+  "quote": "Initial Conversion Rate (6) | 5.46 | 1.49 | 6.68 | 2.31 | 4.30 | 4.89 | Initial Conversion Price (7) | $ 183.19 | $ 672.40 | $ 149.77 | $ 433.43 | $ 232.72 | $ 204.33 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "conversion_rate_adjusted": {
+  "value": "no adjustment indicated: 10-Q max shares 4,614,400 / $2,000,000K = 2.3072 per $1,000 = initial rate",
+  "quote": "2030B Convertible Notes: 4,614,400 shares of class A common stock; \u2022 2031 Convertible Notes: 2,593,923 shares of class A common stock; and",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "free_convertibility_date": {
+  "value": "2029-12-03",
+  "quote": "From and after December 3, 2029, noteholders may convert their notes at any time at their election until the close of business on the second scheduled trading day immediately before the maturity date.",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "call_protection_until": {
+  "value": "2027-03-05",
+  "quote": "at the Company\u2019s option at any time, and from time to time, on or after March 5, 2027 and on or before the 20th scheduled trading day immediately before the maturity date,",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "provisional_call_condition": {
+  "value": "notes Freely Tradable and special/additional interest paid; last reported sale price EXCEEDS 130% of conversion price on each of >=20 of 30 consecutive trading days ending the day before notice AND on the trading day before notice; partial call only if >= $75.0M remains outstanding and not called",
+  "quote": "the last reported sale price per share of the Company\u2019s class A common stock exceeds 130% of the conversion price on (1) each of at least 20 trading days, whether or not consecutive, during the 30 consecutive trading days",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "redemption_price": {
+  "value": "100% of principal + accrued and unpaid special and additional interest",
+  "quote": "The redemption price will be equal to the principal amount of the notes to be redeemed, plus accrued and unpaid special interest and additional interest, if any, to, but excluding, the redemption date.",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "holder_put_date": {
+  "value": "2028-03-01",
+  "quote": "Noteholders may require the Company to repurchase their notes on March 1, 2028, at a cash repurchase price equal to the principal amount of the notes to be repurchased,",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "holder_put_price": {
+  "value": "100% of principal + accrued and unpaid special and additional interest",
+  "quote": "Noteholders may require the Company to repurchase their notes on March 1, 2028, at a cash repurchase price equal to the principal amount of the notes to be repurchased, plus accrued and unpaid special interest and additional interest,",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "conv_condition_stock_price": {
+  "value": "last reported sale price EXCEEDS 130% of conversion price for each of >=20 of last 30 consecutive trading days of preceding quarter; quarters commencing after 2025-06-30",
+  "quote": "commencing after the calendar quarter ending on June 30, 2025, if the Last Reported Sale Price per share of Class A Common Stock exceeds one hundred and thirty percent (130%) of the Conversion Price",
+  "source": "data/raw/edgar/000119312525032800/d851880dex41.htm"
+ },
+ "fair_value_2026_06_30_thousands": {
+  "value": 1776440,
+  "quote": "2030B Convertible Notes | 2,000,000 | ( 8,382 ) | 1,991,618 | 1,776,440 | Level 2 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "fair_value_level": {
+  "value": "Level 2",
+  "quote": "specifically the last traded price at the end of the reporting period of identical instruments in the over-the-counter market (Level 2).",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "ranking": {
+  "value": "senior unsecured; senior to preferred equity; effectively subordinated to secured debt; structurally subordinated to subsidiaries",
+  "quote": "The notes are the Company\u2019s senior, unsecured obligations and are: (i) equal in right of payment with the Company\u2019s existing and future senior, unsecured indebtedness;",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "make_whole": {
+  "value": "yes (Make-Whole Fundamental Change incl. redemption notice, only for called notes)",
+  "quote": "In addition, calling any note for redemption will constitute a Make-Whole Fundamental Change with respect to that note, in which case the conversion rate applicable to the conversion of that note will be increased",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ },
+ "settlement_method": {
+  "value": "cash, shares of class A common stock, or combination, at Company election (indenture Default Settlement Method = Physical Settlement)",
+  "quote": "The Company will settle conversions by paying or delivering, as applicable, cash, shares of its class A common stock or a combination of cash and shares of its class A common stock, at the Company\u2019s election.",
+  "source": "data/raw/edgar/000119312525032800/d851880d8k.htm"
+ }
+}

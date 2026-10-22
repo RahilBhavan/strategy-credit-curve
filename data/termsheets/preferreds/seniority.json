@@ -1,0 +1,43 @@
+{
+ "order": {
+  "value": [
+   "STRF",
+   "STRC",
+   "STRE",
+   "STRK",
+   "STRD"
+  ],
+  "quote": "our series of Preferred Stock rank, from highest to lowest, as follows: STRF Stock, STRC Stock, STRE Stock, STRK Stock, and STRD Stock,",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "STRF_top": {
+  "value": "STRF senior to STRC, STRE, STRK, STRD",
+  "quote": "Our Class A Stock, Class B Stock, STRC Stock, STRE Stock, STRK Stock and STRD Stock constitute dividend junior stock and liquidation junior stock.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "STRC_second": {
+  "value": "STRC junior to STRF; senior to STRE/STRK/STRD",
+  "quote": "Dividend Junior Stock includes the Class A Common Stock, the Class B Common Stock, the Perpetual Stream Preferred Stock, the Perpetual Strike Preferred Stock and the Perpetual Stride Preferred Stock.",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "STRE_third": {
+  "value": "STRE junior to STRF/STRC; senior to STRK/STRD",
+  "quote": "Liquidation Senior Stock includes the Perpetual Strife Preferred Stock and the Perpetual Stretch Preferred Stock.",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "STRK_fourth": {
+  "value": "STRK junior to STRF/STRC/STRE; senior to STRD",
+  "quote": "Dividend senior stock includes the STRF Stock, STRC Stock and STRE Stock. For the avoidance of doubt, dividend senior stock will not include any securities of the Company\u2019s subsidiaries.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "STRD_last": {
+  "value": "STRD junior to all other preferreds",
+  "quote": "Our indebtedness, STRF Stock outstanding, STRC Stock outstanding, STRE Stock outstanding and STRK Stock outstanding rank senior to the STRD Stock outstanding.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "debt_above_all": {
+  "value": "$6.75bn indebtedness senior to all preferreds at 2026-06-30",
+  "quote": "we had approximately $6.75 billion in aggregate principal amount of outstanding indebtedness, all of which ranks senior to our Preferred Stock and our common stock.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ }
+}

@@ -1,0 +1,188 @@
+{
+ "stated_amount": {
+  "value": {
+   "amount": 100,
+   "currency": "USD"
+  },
+  "quote": "\u201cStated amount\u201d means $100 per share of STRF Stock. \u201cSubsidiary\u201d means, with respect to any person,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "dividend_rate": {
+  "value": 0.1,
+  "quote": "\u201cRegular dividend rate\u201d means 10.00% per annum. \u201cRegular dividends\u201d has the meaning set forth above under the caption \u201c-Regular Dividends-Generally.\u201d",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "payment_frequency_and_dates": {
+  "value": {
+   "frequency": "quarterly",
+   "dates": [
+    "03-31",
+    "06-30",
+    "09-30",
+    "12-31"
+   ]
+  },
+  "quote": "\u201cRegular dividend payment date\u201d means each March 31, June 30, September 30 and December 31 of each year. \u201cRegular dividend period\u201d means each period",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "record_dates": {
+  "value": [
+   "03-15",
+   "06-15",
+   "09-15",
+   "12-15"
+  ],
+  "quote": "(i) March 15, in the case of a regular dividend payment date occurring on March 31; (ii) June 15, in the case of a regular dividend payment date occurring on June 30;",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "cumulative": {
+  "value": true,
+  "quote": "The STRF Stock accumulates cumulative dividends (which we refer to as \u201cregular dividends\u201d) at a rate per annum equal to 10.00%",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "compounding": {
+  "value": {
+   "compounded": "quarterly",
+   "initial_rate": "regular rate + 0.01",
+   "step_up_per_period": 0.01,
+   "cap": 0.18
+  },
+  "quote": "will initially be a rate per annum equal to the \u201cregular dividend rate\u201d (as defined below under the caption \u201c-Definitions\u201d) plus 100 basis points;",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "compounding_step_up_cap": {
+  "value": {
+   "step_up_per_period": 0.01,
+   "cap": 0.18
+  },
+  "quote": "such compounded dividend rate will increase by 100 basis points per annum for each subsequent regular dividend period, up to a maximum rate of 18% per annum.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "deferral_mechanism": {
+  "value": {
+   "deferred_payment_date": "1 trading day after the 60th calendar day after missed payment date"
+  },
+  "quote": "If we fail to declare a regular dividend on or prior to a given regular record date, such failure shall constitute the issuance of a notice of deferral.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "mandatory_payment_on_offerings": {
+  "value": {
+   "lookback_days": 90,
+   "trigger": "sale of Class A Stock and/or STRK Stock via registered public offering"
+  },
+  "quote": "If we sell any shares of our Class A Stock and/or STRK Stock cash through a registered public offering (including an at-the-market offering or follow-on offering) during the 90 calendar days preceding a regular record date,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "payment_form": {
+  "value": "cash only",
+  "quote": "Method of Payment Each declared regular dividend on the STRF Stock will be paid in cash.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "conversion": {
+  "value": null,
+  "quote": "Conversion Privilege | None | None | None | Convertible to class A common stock at any time | None |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "optional_redemption": {
+  "value": {
+   "type": "clean-up only",
+   "condition": "outstanding shares < 25% of all shares issued",
+   "scope": "all, not less than all",
+   "price": "liquidation preference (as of business day before notice) + accumulated and unpaid dividends"
+  },
+  "quote": "we have the right, at our election, to redeem all, but not less than all, of the outstanding STRF Stock, at any time for cash if the total number of shares of STRF Stock then outstanding is less than 25%",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "redemption_price": {
+  "value": "liquidation preference as of business day before notice + accumulated and unpaid regular dividends (plus compounded)",
+  "quote": "(i) the liquidation preference of such share as of the business day before the date we send the related redemption notice, as described below, plus (ii) accumulated and unpaid regular dividends (plus compounded dividends thereon)",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "tax_redemption": {
+  "value": {
+   "scope": "all, not less than all",
+   "trigger": "tax event"
+  },
+  "quote": "we have the right, at our election, to redeem all, and not less than all, of the STRF Stock, at any time, for cash if a \u201ctax event\u201d",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "fundamental_change_repurchase": {
+  "value": {
+   "price": "stated amount ($100) + accumulated and unpaid regular dividends",
+   "date_window_business_days": [
+    20,
+    35
+   ]
+  },
+  "quote": "The repurchase price (the \u201cfundamental change repurchase price\u201d) for a share of STRF Stock tendered for repurchase will be an amount equal to (i) the stated amount of such share, plus (ii) accumulated and unpaid regular dividends",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "ranking": {
+  "value": "senior to all other equity incl. STRC, STRE, STRK, STRD and common; parity with dividend/liquidation parity stock; junior to all indebtedness incl. convertible notes; structurally junior to subsidiary liabilities",
+  "quote": "senior to any equity security, including our Class A Stock, Class B Stock, STRC Stock, STRE Stock STRK Stock and STRD Stock, with respect to the payment of dividends and with respect to the distribution of assets",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "ranking_vs_debt": {
+  "value": "junior to existing and future indebtedness incl. convertible notes",
+  "quote": "junior to our existing and future indebtedness (including all of our issued and outstanding convertible notes); and \u2022 structurally junior to all existing and future indebtedness and other liabilities,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "senior_issuance_protection": {
+  "value": "cannot issue dividend/liquidation senior stock without majority consent of STRF + voting parity stock",
+  "quote": "we cannot issue dividend senior stock or liquidation senior stock without the consent of holders of at least a majority of the combined outstanding voting power of the STRF Stock and any voting parity stockholders.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "currency": {
+  "value": "USD",
+  "quote": "10.00% Series A Perpetual Strife Preferred Stock, $0.001 par value per share | STRF | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "listing": {
+  "value": "Nasdaq Global Select Market (STRF)",
+  "quote": "10.00% Series A Perpetual Strife Preferred Stock, $0.001 par value per share | STRF | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "liquidation_preference_definition": {
+  "value": "initially $100; after each business day = greatest of (i) stated amount; (ii) if STRF sold (ATM) on that day or within prior 10 trading days, last reported sale price on prior trading day; (iii) average last reported sale price over prior 10 consecutive trading days",
+  "quote": "the liquidation preference per share of STRF Stock is adjusted to be the greatest of (i) the stated amount per share of STRF Stock; (ii) in the case of any business day with respect to which we have,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "liquidation_preference_definition_avg": {
+  "value": "10-trading-day average clause",
+  "quote": "(iii) the arithmetic average of the last reported sale prices per share of STRF Stock for each trading day of the ten (10) consecutive trading days immediately preceding such business day,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "liquidation_amount": {
+  "value": "liquidation preference as of business day before payment + unpaid regular dividends (plus compounded)",
+  "quote": "the \u201cliquidation preference\u201d (as defined below under the caption \u201c-Definitions\u201d) per share of STRF Stock as of the business day immediately before the date of such payment; and \u2022 all unpaid regular dividends (plus compounded dividends thereon),",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "voting_penalty": {
+  "value": {
+   "director_rights": true,
+   "trigger_1": "4+ consecutive quarterly payment dates unpaid -> 1 director",
+   "trigger_2": "8+ consecutive -> 2nd director",
+   "max_preferred_directors": 2
+  },
+  "quote": "in respect of each of (i) four or more consecutive regular dividend payment dates; and (ii) eight or more consecutive regular dividend payment dates, then, in each case, subject to certain limitations, the authorized number of the Company\u2019s directors will",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "voting_penalty_effect": {
+  "value": "board increases by one; STRF holders with voting parity stock elect one preferred stock director",
+  "quote": "the authorized number of our directors will automatically increase by one (or we will vacate the offices of one director) and the preferred stockholders, voting together as a single class with the holders of each class or series of voting",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "shares_outstanding_2026_06_30": {
+  "value": 12839689,
+  "quote": "Shares Issued as of June 30, 2026 | 12,839,689 | 104,894,705 | 7,750,000 | 14,020,744 | 14,024,221 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "aggregate_liquidation_preference_2026_06_30": {
+  "value": {
+   "amount": 1283969000,
+   "currency": "USD"
+  },
+  "quote": "Aggregate Liquidation Preference as of June 30, 2026 (1) (in thousands) | $ 1,283,969 | $ 10,489,471 | $ 884,120 | $ 1,402,074 | $ 1,402,422 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ }
+}

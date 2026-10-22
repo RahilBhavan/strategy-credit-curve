@@ -1,0 +1,182 @@
+{
+ "stated_amount": {
+  "value": {
+   "amount": 100,
+   "currency": "USD",
+   "note": "stated amount exists only upon ratification of STRK Amendment (ratified 2026-06-08); 10-Q table shows n/a"
+  },
+  "quote": "\u201cStated amount\u201d means, upon ratification of the STRK Amendment, $100 per share of STRK Stock.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "stated_amount_ratification": {
+  "value": "STRK Amendment ratified 2026-06-08",
+  "quote": "On June 8, 2026, at the Company's annual meeting of stockholders (the \"2026 Annual Meeting\"), the holders of the Company's common stock ratified, pursuant to Section 204 of the Delaware General Corporation Law, the filing and effectiveness of the STRK",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "dividend_rate": {
+  "value": 0.08,
+  "quote": "\u201cRegular dividend rate\u201d means 8.00% per annum. \u201cRegular dividend stock price\u201d means, with respect to any declared regular dividend on the STRK Stock, 95% of the daily VWAP",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "payment_frequency_and_dates": {
+  "value": {
+   "frequency": "quarterly",
+   "dates": [
+    "03-31",
+    "06-30",
+    "09-30",
+    "12-31"
+   ]
+  },
+  "quote": "\u201cRegular dividend payment date\u201d means each March 31, June 30, September 30 and December 31 of each year, which began on March 31, 2025.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "record_dates": {
+  "value": [
+   "03-15",
+   "06-15",
+   "09-15",
+   "12-15"
+  ],
+  "quote": "(iii) September 15, in the case of a regular dividend payment date occurring on September 30; and (iv) December 15, in the case of a regular dividend payment date occurring on December 31. \u201cReference property\u201d has",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "cumulative": {
+  "value": true,
+  "quote": "The STRK Stock accumulates cumulative dividends (referred to herein as \u201cregular dividends\u201d) at a rate per annum equal to 8.00%",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "compounding": {
+  "value": {
+   "compounded": "quarterly",
+   "rate": 0.08,
+   "step_up": null,
+   "cap": null
+  },
+  "quote": "will accumulate on the amount of such unpaid regular dividend, compounded quarterly at the regular dividend rate, from, and including, such regular dividend payment date to, but excluding, the date the same,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "mandatory_payment_on_offerings": {
+  "value": {
+   "lookback_days": 90,
+   "trigger": "sale of Class A Stock via registered public offering",
+   "subject_to": "terms of dividend senior stock"
+  },
+  "quote": "If the Company sells any shares of Class A Stock for cash through a registered public offering (including an at-the-market offering or follow-on offering) during the 90 calendar days preceding a regular record date, then, subject to the terms of",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "payment_form": {
+  "value": {
+   "form": "cash, Class A shares, or combination at company election",
+   "stock_price": "95% of daily VWAP on 3rd VWAP trading day before payment date",
+   "floor_price_initial": 119.03
+  },
+  "quote": "Declared regular dividends on the STRK Stock will be payable, at the Company\u2019s election, in cash, shares of the Class A Stock or a combination of cash and shares of the Class A Stock,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "payment_form_floor": {
+  "value": 119.03,
+  "quote": "The initial floor price of the STRK Stock is $119.03 per share of Class A Stock.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "conversion_rate": {
+  "value": {
+   "rate": 0.1,
+   "conversion_price": 1000.0,
+   "holder_option": true,
+   "timing": "any business day",
+   "company_or_mandatory_conversion": null
+  },
+  "quote": "at an initial conversion rate of 0.1000 shares of Class A Stock per share of STRK Stock (which represents an initial conversion price of $1,000.00 per share of Class A Stock).",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "holder_conversion": {
+  "value": "holder may convert some or all at any time (business days)",
+  "quote": "Preferred stockholders have the right to convert some (subject to the limitation described below) or all of their shares of STRK Stock into shares of Class A Stock",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "optional_redemption": {
+  "value": {
+   "type": "clean-up",
+   "condition": "aggregate stated amount outstanding < $182,500,000 (25% of initial issuance)",
+   "scope": "all, not less than all",
+   "price": "liquidation preference as of business day before notice + accumulated and unpaid dividends"
+  },
+  "quote": "if the total aggregate initial liquidation preference (or, upon ratification of the STRK Amendment, the stated amount) of all STRK Stock then outstanding is less than $182,500,000",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "tax_redemption": {
+  "value": {
+   "scope": "all, not less than all",
+   "price": "greater of liquidation preference and 5-trading-day average last reported sale price, + accumulated and unpaid dividends"
+  },
+  "quote": "(i) the greater of (1) the liquidation preference (or, upon ratification of the STRK Amendment, the liquidation preference as of the business day immediately before the date the Company sends the related redemption notice)",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "fundamental_change_repurchase": {
+  "value": {
+   "price": "stated amount ($100, post-ratification) + accumulated and unpaid regular dividends",
+   "exception": "no repurchase right for certain all-cash Class A Stock Change Events where conversion value >= FC repurchase price"
+  },
+  "quote": "will be an amount equal to (i) the liquidation preference (or, upon ratification of the STRK Amendment, the stated amount) of such share, plus (ii) accumulated and unpaid regular dividends on such share",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "ranking": {
+  "value": "junior to STRF, STRC, STRE; senior to STRD and common; junior to all indebtedness",
+  "quote": "Dividend senior stock includes the STRF Stock, STRC Stock and STRE Stock. For the avoidance of doubt, dividend senior stock will not include any securities of the Company\u2019s subsidiaries.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "ranking_junior_list": {
+  "value": "STRD, Class A, Class B junior",
+  "quote": "Dividend junior stock includes the STRD Stock, the Class A Stock and the Class B Stock.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "ranking_vs_debt": {
+  "value": "junior to all indebtedness",
+  "quote": "\u2022 junior to the Company\u2019s existing and future indebtedness; and \u2022 structurally junior to all existing and future indebtedness and other liabilities,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "senior_issuance_protection": {
+  "value": "none",
+  "quote": "The terms of the STRK Stock do not restrict the Company from issuing dividend senior stock or liquidation senior stock.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "currency": {
+  "value": "USD",
+  "quote": "8.00% Series A Perpetual Strike Preferred Stock, $0.001 par value per share | STRK | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "listing": {
+  "value": "Nasdaq Global Select Market (STRK)",
+  "quote": "8.00% Series A Perpetual Strike Preferred Stock, $0.001 par value per share | STRK | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "liquidation_preference_definition": {
+  "value": "post-ratification: greatest of (i) stated amount $100; (ii) if STRK sold on that day or within prior 10 trading days, last reported sale price on prior trading day; (iii) 10-consecutive-trading-day average; amendment execution treated as a sale",
+  "quote": "the liquidation preference per share of STRK Stock will be adjusted to be the greatest of (i) the stated amount of $100 per share of STRK Stock (the \u201cstated amount\u201d);",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "voting_penalty": {
+  "value": {
+   "director_rights": true,
+   "trigger_1": "4+ consecutive quarterly dividends unpaid -> 1 director",
+   "trigger_2": "8+ -> 2nd",
+   "counts_stock_payments": true
+  },
+  "quote": "in respect of each of (i) four or more consecutive regular dividend payment dates; and (ii) eight or more consecutive regular dividend payment dates, then, in each case, subject to certain limitations, the authorized number of the Company\u2019s directors will",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "shares_outstanding_2026_06_30": {
+  "value": 14020744,
+  "quote": "Shares Issued as of June 30, 2026 | 12,839,689 | 104,894,705 | 7,750,000 | 14,020,744 | 14,024,221 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "aggregate_liquidation_preference_2026_06_30": {
+  "value": {
+   "amount": 1402074000,
+   "currency": "USD"
+  },
+  "quote": "Aggregate Liquidation Preference as of June 30, 2026 (1) (in thousands) | $ 1,283,969 | $ 10,489,471 | $ 884,120 | $ 1,402,074 | $ 1,402,422 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ }
+}

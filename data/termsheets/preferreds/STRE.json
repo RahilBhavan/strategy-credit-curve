@@ -1,0 +1,149 @@
+{
+ "stated_amount": {
+  "value": {
+   "amount": 100,
+   "currency": "EUR"
+  },
+  "quote": "\u201c Stated Amount \u201d means one hundred Euros (\u20ac100) per share of Perpetual Stream Preferred Stock.",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "dividend_rate": {
+  "value": 0.1,
+  "quote": "\u201c Regular Dividend Rate \u201d means 10.00% per annum. \u201c Regular Dividends \u201d has the meaning set forth in Section 5(a)(i) .",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "payment_frequency_and_dates": {
+  "value": {
+   "frequency": "quarterly",
+   "dates": [
+    "03-31",
+    "06-30",
+    "09-30",
+    "12-31"
+   ],
+   "first": "2025-12-31"
+  },
+  "quote": "each March 31, June 30, September 30 and December 31 of each year, beginning on December 31, 2025 (or beginning on such other date specified in the certificate representing such share).",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "record_dates": {
+  "value": [
+   "03-15",
+   "06-15",
+   "09-15",
+   "12-15"
+  ],
+  "quote": "(a) March 15, in the case of a Regular Dividend Payment Date occurring on March 31; (b) June 15, in the case of a Regular Dividend Payment Date occurring on June 30;",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "cumulative": {
+  "value": true,
+  "quote": "The Perpetual Stream Preferred Stock will accumulate cumulative dividends (\u201c Regular Dividends \u201d) at a rate per annum equal to the Regular Dividend Rate on the Stated Amount thereof",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "compounding": {
+  "value": {
+   "compounded": "quarterly",
+   "initial_rate": "regular rate + 0.01",
+   "step_up_per_period": 0.01,
+   "cap": 0.18
+  },
+  "quote": "such Compounded Dividend Rate will increase by one hundred (100) basis points per annum for each subsequent Regular Dividend Period, up to a maximum rate of eighteen percent (18%) per annum.",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "deferral_mechanism": {
+  "value": "notice of deferral on failure to declare; 60-day efforts to sell STRK/STRD/Class A/junior stock",
+  "quote": "If Strategy fails to declare a regular dividend on or prior to a given regular record date, such failure will constitute the issuance of a notice of deferral.",
+  "source": "data/raw/edgar/000119312525280178/d205736d8k.htm"
+ },
+ "payment_form": {
+  "value": "cash only, in euros",
+  "quote": "All payments on the Perpetual Stream Preferred Stock will be payable in Euros;",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "conversion": {
+  "value": null,
+  "quote": "Conversion Privilege | None | None | None | Convertible to class A common stock at any time | None |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "optional_redemption": {
+  "value": {
+   "type": "clean-up",
+   "condition": "outstanding shares < 25% of all shares issued",
+   "scope": "all, not less than all",
+   "price": "liquidation preference as of business day before notice + accumulated and unpaid dividends"
+  },
+  "quote": "at any time if the total number of shares of Perpetual Stream Preferred Stock then outstanding is less than 25% of the total number of shares of the Perpetual Stream Preferred Stock originally issued",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "redemption_price": {
+  "value": "liquidation preference + accumulated and unpaid dividends",
+  "quote": "an amount equal to (1) the Liquidation Preference of such share as of the Business Day before the date the Company sends the related Redemption Notice, plus (2) accumulated and unpaid Regular Dividends",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "tax_redemption": {
+  "value": {
+   "scope": "all, not less than all",
+   "trigger": "Tax Event"
+  },
+  "quote": "the Company has the right, at its election, to redeem (a \u201c Tax Redemption \u201d) all, and not less than all, of the Perpetual Stream Preferred Stock, at any time, for a cash purchase price equal to the Redemption Price,",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "fundamental_change_repurchase": {
+  "value": {
+   "price": "stated amount (EUR 100) + accumulated and unpaid regular dividends"
+  },
+  "quote": "The Fundamental Change Repurchase Price for a share of Perpetual Stream Preferred Stock to be repurchased upon a Repurchase Upon Fundamental Change following a Fundamental Change will be an amount in cash equal to (i) the Stated Amount of such",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "ranking": {
+  "value": "junior to STRF and STRC; senior to STRK, STRD and common",
+  "quote": "Dividend Senior Stock includes the Perpetual Strife Preferred Stock and the Perpetual Stretch Preferred Stock.",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "ranking_junior_list": {
+  "value": "STRK, STRD, Class A, Class B junior",
+  "quote": "Dividend Junior Stock includes the Class A Common Stock, the Class B Common Stock, the Perpetual Strike Preferred Stock and the Perpetual Stride Preferred Stock.",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "ranking_vs_debt": {
+  "value": "junior to all indebtedness (from 10-Q; STRE CoD ranking clause is silent on debt)",
+  "quote": "we had approximately $6.75 billion in aggregate principal amount of outstanding indebtedness, all of which ranks senior to our Preferred Stock and our common stock.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "currency": {
+  "value": "EUR",
+  "quote": "All payments on the Perpetual Stream Preferred Stock will be payable in Euros; provided that if on or after the November 6, 2025 the Euro is unavailable to the Company",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "listing": {
+  "value": "Luxembourg Stock Exchange (LuxSE: STRE); not Nasdaq",
+  "quote": "Trading Symbol | STRF | STRC | STRE | STRK | STRD | Stock Exchange | NASDAQ | NASDAQ | Luxembourg Stock Exchange | NASDAQ | NASDAQ |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "liquidation_preference_definition": {
+  "value": "initially EUR 100; after each business day = greatest of (a) stated amount; (b) if STRE sold on that day or within prior 10 trading days, last reported sale price on prior trading day; (c) 10-consecutive-trading-day average",
+  "quote": "the Liquidation Preference per share of Perpetual Stream Preferred Stock will be adjusted to be the greatest of (a) the Stated Amount per share of Perpetual Stream Preferred Stock; (b) in the case of any Business Day",
+  "source": "data/raw/edgar/000119312525280178/d205736dex31.htm"
+ },
+ "voting_penalty": {
+  "value": {
+   "director_rights": false
+  },
+  "quote": "Holders of STRC Stock, STRE Stock and STRD Stock do not have the right to elect any directors to the Company\u2019s board of directors upon non-payment of regular dividends.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "shares_outstanding_2026_06_30": {
+  "value": 7750000,
+  "quote": "Shares Issued as of June 30, 2026 | 12,839,689 | 104,894,705 | 7,750,000 | 14,020,744 | 14,024,221 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "aggregate_liquidation_preference_2026_06_30": {
+  "value": {
+   "amount_usd": 884120000,
+   "notional_eur": 775000000
+  },
+  "quote": "STRE Stock | 7,750 | \u20ac | 775,000 | 10.00% | STRK Stock | 14,021 | $ | 1,402,074 | 8.00% |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ }
+}

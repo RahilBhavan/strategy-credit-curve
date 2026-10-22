@@ -1,0 +1,10 @@
+{
+ "source_url": "https://www.strategy.com/press/microstrategy-announces-10-for-1-stock-split_07-11-2024",
+ "retrieved_via": "web browser tool; direct Python fetch returned HTTP 403",
+ "verified_on": "2026-10-21 America/Detroit",
+ "announcement_date": "2024-07-11",
+ "expected_split_trading_date": "2024-08-08",
+ "factor": 10,
+ "kind": "manually verified primary-source extraction; not original response bytes",
+ "reconciliation": "Original 2030A/2031/2032 ratios multiplied by 10 match Q2 2026 maximum conversion shares / principal. Later notes were issued after the split. Exact ratio for 2031 differs by ~0.00000046 because maximum shares are integral."
+}

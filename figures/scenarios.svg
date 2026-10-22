@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 940" role="img" aria-labelledby="title desc">
+<title id="title">Six notes, nine assumed prices each</title>
+<desc id="desc">Model scenario minima, central assumptions and maxima per $1,000 face. These are not market quotes or confidence intervals.</desc>
+<rect width="760" height="940" fill="#F5F5EF"/>
+<g font-family="IBM Plex Sans, Arial, sans-serif" fill="#111214">
+<text x="32" y="46" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">RAHIL BHAVAN / BUILD NOTES</text>
+<text x="32" y="104" font-size="32" text-anchor="start" font-weight="600" fill="#111214">Six notes, nine assumed prices each</text>
+<text x="32" y="150" font-size="28" text-anchor="start" font-weight="400" fill="#111214">Synthetic inputs • USD per $1,000 face</text>
+<text x="32" y="192" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Contract/rate snapshot: 21 Oct 2026</text>
+<rect x="431" y="216" width="152" height="410" fill="#FFE500"/>
+<text x="32" y="260" font-size="28" text-anchor="start" font-weight="600" fill="#111214">Note</text>
+<text x="403" y="260" font-size="28" text-anchor="end" font-weight="600" fill="#111214">Low</text>
+<text x="557" y="260" font-size="28" text-anchor="end" font-weight="600" fill="#111214">Central*</text>
+<text x="718" y="260" font-size="28" text-anchor="end" font-weight="600" fill="#111214">High</text>
+<path d="M32 280H728" stroke="#C6C7BF"/>
+<text x="32" y="327" font-size="30" text-anchor="start" font-weight="400" fill="#111214">2028</text>
+<text x="403" y="327" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,408.05</text>
+<text x="557" y="327" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,502.03</text>
+<text x="718" y="327" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,597.62</text>
+<text x="32" y="382" font-size="30" text-anchor="start" font-weight="400" fill="#111214">2029</text>
+<text x="403" y="382" font-size="30" text-anchor="end" font-weight="400" fill="#111214">795.86</text>
+<text x="557" y="382" font-size="30" text-anchor="end" font-weight="400" fill="#111214">884.47</text>
+<text x="718" y="382" font-size="30" text-anchor="end" font-weight="400" fill="#111214">946.81</text>
+<text x="32" y="437" font-size="30" text-anchor="start" font-weight="400" fill="#111214">2030A</text>
+<text x="403" y="437" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,679.37</text>
+<text x="557" y="437" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,713.85</text>
+<text x="718" y="437" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,757.45</text>
+<text x="32" y="492" font-size="30" text-anchor="start" font-weight="400" fill="#111214">2030B</text>
+<text x="403" y="492" font-size="30" text-anchor="end" font-weight="400" fill="#111214">861.63</text>
+<text x="557" y="492" font-size="30" text-anchor="end" font-weight="400" fill="#111214">960.24</text>
+<text x="718" y="492" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,022.60</text>
+<text x="32" y="547" font-size="30" text-anchor="start" font-weight="400" fill="#111214">2031</text>
+<text x="403" y="547" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,164.37</text>
+<text x="557" y="547" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,289.48</text>
+<text x="718" y="547" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,399.48</text>
+<text x="32" y="602" font-size="30" text-anchor="start" font-weight="400" fill="#111214">2032</text>
+<text x="403" y="602" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,333.65</text>
+<text x="557" y="602" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,491.34</text>
+<text x="718" y="602" font-size="30" text-anchor="end" font-weight="400" fill="#111214">1,630.64</text>
+<text x="32" y="675" font-size="28" text-anchor="start" font-weight="400" fill="#111214">*Central: 60% volatility, 5% credit spread.</text>
+<text x="32" y="717" font-size="28" text-anchor="start" font-weight="400" fill="#111214">Grid: vol 40/60/80%; spread 2/5/10%.</text>
+<text x="32" y="759" font-size="28" text-anchor="start" font-weight="400" fill="#111214">Low/high are grid extrema, not probabilities.</text>
+<text x="32" y="801" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">600 steps; simplified exercise triggers.</text>
+<text x="32" y="843" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Source: results/convertibles.json</text>
+<text x="32" y="885" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Synthetic prices/vols; not market quotes.</text>
+<text x="32" y="927" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Method: docs/methodology.md</text>
+</g>
+</svg>

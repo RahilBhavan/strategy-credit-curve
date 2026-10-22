@@ -1,0 +1,148 @@
+{
+ "stated_amount": {
+  "value": {
+   "amount": 100,
+   "currency": "USD"
+  },
+  "quote": "\u201cStated amount\u201d means $100 per share of STRD Stock. \u201cSubsidiary\u201d means, with respect to any person, (i) any corporation, association or other business entity",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "dividend_rate": {
+  "value": 0.1,
+  "quote": "Holders of the STRD Stock will be entitled to receive non-cumulative dividends (which we refer to as \u201cregular dividends\u201d) at a rate per annum equal to 10.00%",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "payment_frequency_and_dates": {
+  "value": {
+   "frequency": "quarterly",
+   "dates": [
+    "03-31",
+    "06-30",
+    "09-30",
+    "12-31"
+   ]
+  },
+  "quote": "If declared, regular dividends will be payable quarterly in arrears on each \u201cregular dividend payment date\u201d (as defined below under the caption \u201c-Definitions\u201d)",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "record_dates": {
+  "value": [
+   "03-15",
+   "06-15",
+   "09-15",
+   "12-15"
+  ],
+  "quote": "(i) March 15, in the case of a regular dividend payment date occurring on March 31; (ii) June 15, in the case of a regular dividend payment date occurring on June 30;",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "cumulative": {
+  "value": false,
+  "quote": "Holders of the Perpetual Stride Preferred Stock will be entitled to receive non-cumulative dividends (\u201c Regular Dividends \u201d) at a rate per annum equal to the Regular Dividend Rate on the Stated Amount thereof,",
+  "source": "data/raw/edgar/000119312525138477/d941529dex31.htm"
+ },
+ "compounding": {
+  "value": null,
+  "quote": "No dividend, interest or other amount will accumulate or accrue on any unpaid regular dividends, regardless of whether regular dividends are declared for any future regular dividend period.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "payment_form": {
+  "value": "cash only",
+  "quote": "Method of Payment Each declared regular dividend on the STRD Stock will be paid in cash.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "conversion": {
+  "value": null,
+  "quote": "Conversion Privilege | None | None | None | Convertible to class A common stock at any time | None |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "optional_redemption": {
+  "value": {
+   "type": "clean-up",
+   "condition": "outstanding shares < 25% of all shares issued",
+   "scope": "all, not less than all",
+   "price": "liquidation preference as of business day before notice + declared and unpaid dividends (no undeclared)"
+  },
+  "quote": "we have the right, at our election, to redeem all, but not less than all, of the outstanding STRD Stock, at any time for cash if the total number of shares of STRD Stock then outstanding is less than 25%",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "redemption_price": {
+  "value": "liquidation preference + declared and unpaid dividends only",
+  "quote": "(i) the liquidation preference of such share as of the business day before the date we send the related redemption notice, as described below, plus (ii) declared and unpaid regular dividends,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "tax_redemption": {
+  "value": {
+   "scope": "all, not less than all",
+   "trigger": "tax event"
+  },
+  "quote": "we have the right, at our election, to redeem all, and not less than all, of the STRD Stock, at any time, for cash if a \u201ctax event\u201d",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "fundamental_change_repurchase": {
+  "value": {
+   "price": "stated amount ($100) + declared and unpaid dividends (undeclared excluded)"
+  },
+  "quote": "The repurchase price (the \u201cfundamental change repurchase price\u201d) for a share of STRD Stock tendered for repurchase will be an amount equal to (i) the stated amount of such share, plus (ii) declared and unpaid regular dividends,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "ranking": {
+  "value": "junior to STRF, STRC, STRE, STRK and all debt; senior only to common",
+  "quote": "Our indebtedness, STRF Stock outstanding, STRC Stock outstanding, STRE Stock outstanding and STRK Stock outstanding rank senior to the STRD Stock outstanding.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "ranking_cod": {
+  "value": "STRD CoD (June 2025) lists STRK and STRF as senior",
+  "quote": "Liquidation Senior Stock includes the Perpetual Strike Preferred Stock and the Perpetual Strife Preferred Stock.",
+  "source": "data/raw/edgar/000119312525138477/d941529dex31.htm"
+ },
+ "ranking_vs_debt": {
+  "value": "junior to all indebtedness incl. convertible notes",
+  "quote": "(ii) junior to our existing and future indebtedness (including all of our issued and outstanding convertible notes); and \u2022 structurally junior to all existing and future indebtedness",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "senior_issuance_protection": {
+  "value": "none",
+  "quote": "The terms of the STRD Stock will not restrict us from issuing dividend senior stock, dividend parity stock, liquidation senior stock or liquidation parity stock.",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "currency": {
+  "value": "USD",
+  "quote": "10.00% Series A Perpetual Stride Preferred Stock, $0.001 par value per share | STRD | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "listing": {
+  "value": "Nasdaq Global Select Market (STRD)",
+  "quote": "10.00% Series A Perpetual Stride Preferred Stock, $0.001 par value per share | STRD | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "liquidation_preference_definition": {
+  "value": "initially $100; after each business day = greatest of (i) stated amount; (ii) if STRD sold on that day or within prior 10 trading days, last reported sale price on prior trading day; (iii) 10-consecutive-trading-day average",
+  "quote": "the liquidation preference per share of STRD Stock is adjusted to be the greatest of (i) the stated amount per share of STRD Stock; (ii) in the case of any business day with respect to which we have,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "liquidation_amount": {
+  "value": "liquidation preference + declared and unpaid dividends",
+  "quote": "the \u201cliquidation preference\u201d (as defined below under the caption \u201c-Definitions\u201d) per share of STRD Stock as of the business day immediately before the date of such payment; and \u2022 all declared and unpaid regular dividends,",
+  "source": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm"
+ },
+ "voting_penalty": {
+  "value": {
+   "director_rights": false
+  },
+  "quote": "Holders of STRC Stock, STRE Stock and STRD Stock do not have the right to elect any directors to the Company\u2019s board of directors upon non-payment of regular dividends.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "shares_outstanding_2026_06_30": {
+  "value": 14024221,
+  "quote": "Shares Issued as of June 30, 2026 | 12,839,689 | 104,894,705 | 7,750,000 | 14,020,744 | 14,024,221 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "aggregate_liquidation_preference_2026_06_30": {
+  "value": {
+   "amount": 1402422000,
+   "currency": "USD"
+  },
+  "quote": "Aggregate Liquidation Preference as of June 30, 2026 (1) (in thousands) | $ 1,283,969 | $ 10,489,471 | $ 884,120 | $ 1,402,074 | $ 1,402,422 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ }
+}

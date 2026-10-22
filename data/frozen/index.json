@@ -1,0 +1,351 @@
+[
+ {
+  "path": "data/raw/edgar/000105044626000020/ex42descriptionofregistere.htm",
+  "bytes": 700413,
+  "sha256": "4da68f2797e07b0cf1f7149ad6fc6b840c1c36523fbfd4be69931708029df526",
+  "parts": [
+   "000-000.gzpart",
+   "000-001.gzpart",
+   "000-002.gzpart",
+   "000-003.gzpart",
+   "000-004.gzpart",
+   "000-005.gzpart",
+   "000-006.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000105044626000044/mstr-20260630.htm",
+  "bytes": 2814743,
+  "sha256": "0a1f3e12246d199c66c0dc4b77a6d3f68a4c884af80fcc3af37977cf7cefc523",
+  "parts": [
+   "001-000.gzpart",
+   "001-001.gzpart",
+   "001-002.gzpart",
+   "001-003.gzpart",
+   "001-004.gzpart",
+   "001-005.gzpart",
+   "001-006.gzpart",
+   "001-007.gzpart",
+   "001-008.gzpart",
+   "001-009.gzpart",
+   "001-010.gzpart",
+   "001-011.gzpart",
+   "001-012.gzpart",
+   "001-013.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524064321/d749312d8k.htm",
+  "bytes": 39287,
+  "sha256": "5b4ec4e25f3c1f57fe823f67885200bb85e9d3ba28dca31310881f849f6ecb2b",
+  "parts": [
+   "002-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524064321/d749312dex41.htm",
+  "bytes": 621750,
+  "sha256": "7523aaa64dc5232aef6cddc40f22016f6402c366b3214638f22f87c479ddf10b",
+  "parts": [
+   "003-000.gzpart",
+   "003-001.gzpart",
+   "003-002.gzpart",
+   "003-003.gzpart",
+   "003-004.gzpart",
+   "003-005.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524070793/d792323d8k.htm",
+  "bytes": 39512,
+  "sha256": "fd1dd1f9cfac4bd075672a9e5e4ac1f31606b1360f2f3ee6a7b99dad28894ca8",
+  "parts": [
+   "004-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524070793/d792323dex41.htm",
+  "bytes": 640534,
+  "sha256": "1ac73380a21bd9a91b0ce0a7259a63872060092e94c29c00a729ab2abaf766ff",
+  "parts": [
+   "005-000.gzpart",
+   "005-001.gzpart",
+   "005-002.gzpart",
+   "005-003.gzpart",
+   "005-004.gzpart",
+   "005-005.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524164009/d857957d8k.htm",
+  "bytes": 40209,
+  "sha256": "edaea5fc90c4cfb1770086b0df322a4271e937ae51edb80caa0dd53f1980298d",
+  "parts": [
+   "006-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524164009/d857957dex41.htm",
+  "bytes": 634801,
+  "sha256": "6cc05e049e319e20f42ca8d39dc3711c7f61bc0776f466ce298c9bfdb9e6dd66",
+  "parts": [
+   "007-000.gzpart",
+   "007-001.gzpart",
+   "007-002.gzpart",
+   "007-003.gzpart",
+   "007-004.gzpart",
+   "007-005.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524222462/d887785d8k.htm",
+  "bytes": 41631,
+  "sha256": "515ef3307d509b6776cfd69c97138bb8baa1045bca6f9a09a94a791aedfa4e16",
+  "parts": [
+   "008-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524222462/d887785dex41.htm",
+  "bytes": 645686,
+  "sha256": "d8372b7fd8d76511ce4b0e9b3303fa125e6b9415584ff688c200058c4976387c",
+  "parts": [
+   "009-000.gzpart",
+   "009-001.gzpart",
+   "009-002.gzpart",
+   "009-003.gzpart",
+   "009-004.gzpart",
+   "009-005.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524263404/d905221d8k.htm",
+  "bytes": 40463,
+  "sha256": "d6044af241e3c7f5cccdfb34b6ba4a4f0ddc83f5b97da00183ea0e59570d32d7",
+  "parts": [
+   "010-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312524263404/d905221dex41.htm",
+  "bytes": 656549,
+  "sha256": "568e2ff2da4093adf9cc98bdc6d5c46b2fbf4a2e01cf14463030ec3f7eb4a2c8",
+  "parts": [
+   "011-000.gzpart",
+   "011-001.gzpart",
+   "011-002.gzpart",
+   "011-003.gzpart",
+   "011-004.gzpart",
+   "011-005.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525020868/d791994d8k.htm",
+  "bytes": 41437,
+  "sha256": "655f9ae39b0c088732dc4a6ee3fb2da0a862e41273c12f34135d1180165b5c4d",
+  "parts": [
+   "012-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525020868/d791994dex31.htm",
+  "bytes": 419263,
+  "sha256": "29c1e18209bbd489fff05af2546f52e71be0b716e0c0bf2248b82a214e857429",
+  "parts": [
+   "013-000.gzpart",
+   "013-001.gzpart",
+   "013-002.gzpart",
+   "013-003.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525032800/d851880d8k.htm",
+  "bytes": 48060,
+  "sha256": "156890748331862b08cdc4292ff8af2253a9418e7845fff4d62bff89f04c9451",
+  "parts": [
+   "014-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525032800/d851880dex41.htm",
+  "bytes": 644158,
+  "sha256": "f4ce70450b29dbee819b0f117a3f48bdc483824a1af6b8780bd8e29b50faaa10",
+  "parts": [
+   "015-000.gzpart",
+   "015-001.gzpart",
+   "015-002.gzpart",
+   "015-003.gzpart",
+   "015-004.gzpart",
+   "015-005.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525062523/d943742d8k.htm",
+  "bytes": 44034,
+  "sha256": "2b2720472d257915697cc187adec4d8921c0fcb8e5f3e9d20d2c0e4dc6381f86",
+  "parts": [
+   "016-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525062523/d943742dex31.htm",
+  "bytes": 288415,
+  "sha256": "a806ed6481dfb64450eb3ef2a51cd11024ba573fdeed50960e388b5f05145a13",
+  "parts": [
+   "017-000.gzpart",
+   "017-001.gzpart",
+   "017-002.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525138477/d941529d8k.htm",
+  "bytes": 41368,
+  "sha256": "fae25adb75a76d76166a2208f5cfbd435f7844f6ac42072b44260aaef5cdb698",
+  "parts": [
+   "018-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525138477/d941529dex31.htm",
+  "bytes": 272885,
+  "sha256": "cd6cc67a51c83262074b18892e75e2770755c1dea14ba84d93621ccd14a6a5d8",
+  "parts": [
+   "019-000.gzpart",
+   "019-001.gzpart",
+   "019-002.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525167987/d43815d8k.htm",
+  "bytes": 54048,
+  "sha256": "a3f2bb63d1eee414e8f085773da043d60209675b28cc367ca1f36c55b348df08",
+  "parts": [
+   "020-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525167987/d43815dex31.htm",
+  "bytes": 272762,
+  "sha256": "caf91bcdd6a2e7442796c8fb1997d65edc0c864acdad4f772778374b97627aa9",
+  "parts": [
+   "021-000.gzpart",
+   "021-001.gzpart",
+   "021-002.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525271105/d78313d8k.htm",
+  "bytes": 41281,
+  "sha256": "d2f68c4d63f1ec771f9669010563c687c0d44ea0c3d84ea60e354798a8c50758",
+  "parts": [
+   "022-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525280178/d205736d8k.htm",
+  "bytes": 44115,
+  "sha256": "7382f6eabf6e24fb3ba250dfffa559d3584d407bc3506c720bcf0578387a70de",
+  "parts": [
+   "023-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312525280178/d205736dex31.htm",
+  "bytes": 269267,
+  "sha256": "1dfdb4b244e12f922c694c36f65f074cffb7bcf589d553ce72b9be2f0ca9571c",
+  "parts": [
+   "024-000.gzpart",
+   "024-001.gzpart",
+   "024-002.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526118810/d93392d8k.htm",
+  "bytes": 58984,
+  "sha256": "adf3376bd96226734dbaf1a9c65165710ead5a1f885f7e5d95061e0341092028",
+  "parts": [
+   "025-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526270366/d144149d8k.htm",
+  "bytes": 47273,
+  "sha256": "f9130e031a333862ad3d88d5b24919afc110abc6313c49ff40028e7b7e8e699b",
+  "parts": [
+   "026-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526270366/d144149dex31.htm",
+  "bytes": 285476,
+  "sha256": "14907031dce57e8e1953990036b0731dc6e8b823bc1b54c083945a9fe2f24143",
+  "parts": [
+   "027-000.gzpart",
+   "027-001.gzpart",
+   "027-002.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526413159/d503578ddef14a.htm",
+  "bytes": 2064195,
+  "sha256": "0b206dbc1a2926c712d8ff607fb4ad651777e67eef7656c92cce6a981b26aa3c",
+  "parts": [
+   "028-000.gzpart",
+   "028-001.gzpart",
+   "028-002.gzpart",
+   "028-003.gzpart",
+   "028-004.gzpart",
+   "028-005.gzpart",
+   "028-006.gzpart",
+   "028-007.gzpart",
+   "028-008.gzpart",
+   "028-009.gzpart",
+   "028-010.gzpart",
+   "028-011.gzpart",
+   "028-012.gzpart",
+   "028-013.gzpart",
+   "028-014.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526419726/mstr-20261012.htm",
+  "bytes": 84373,
+  "sha256": "33119535e3b1f47ddb759f40c04f2060c88e637f74040b9208b5eed9bc1c55f9",
+  "parts": [
+   "029-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526419726/mstr-ex99_1.htm",
+  "bytes": 132400,
+  "sha256": "b3c3501059abe6f6fe470f0f055962849057da67034a3702b948d442aed8bda9",
+  "parts": [
+   "030-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526423400/mstr-20261015.htm",
+  "bytes": 146178,
+  "sha256": "51d73a2674bbfafbfea0cc4e8926bd2bbe83196e61e4d7c20f5fad06fb628e6c",
+  "parts": [
+   "031-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/000119312526424688/mstr-20261019.htm",
+  "bytes": 207323,
+  "sha256": "758fffb5bae03a2b52568ef75168f7fe710e41b46f1092e96fd72425865c99f3",
+  "parts": [
+   "032-000.gzpart"
+  ]
+ },
+ {
+  "path": "data/raw/edgar/submissions-CIK0001050446.json",
+  "bytes": 157522,
+  "sha256": "4977391135a2f32e22bf30db21bb589409ab55fa333c0164e12cdbe5884f093c",
+  "parts": [
+   "033-000.gzpart",
+   "033-001.gzpart"
+  ]
+ }
+]

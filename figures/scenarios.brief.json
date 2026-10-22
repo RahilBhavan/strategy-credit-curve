@@ -1,0 +1,46 @@
+{
+  "id": "note-scenarios",
+  "reader": "Recruiter or research engineer reviewing the offline model",
+  "decision": "Inspect scenario sensitivity without mistaking assumptions for market prices",
+  "point": "Each of six notes is priced under nine assumptions",
+  "comparison": "Each note across volatility/spread assumptions with synthetic stock prices and a labeled central case",
+  "title": "Six notes, nine assumed prices each",
+  "form": "table",
+  "values_count": 18,
+  "accents": 1,
+  "accent_meaning": "title-value",
+  "estimates": {
+    "present": true,
+    "labeled": true,
+    "treatment": "range"
+  },
+  "illustration": false,
+  "sources": [
+    {
+      "title": "Generated TF scenarios",
+      "url": "../results/convertibles.json",
+      "as_of": "2026-10-21"
+    }
+  ],
+  "alt": "All six notes have nine TF scenario prices each using synthetic market inputs; central prices range from $884.47 to $1,713.85 per $1,000 face. Not market quotes.",
+  "sizes_checked": [
+    "760x940",
+    "400x495"
+  ],
+  "feed_width_viewed": true,
+  "min_label_px": 14.736842105263158,
+  "point_px": 16.842105263157894,
+  "contrast_min": 6.916424911441444,
+  "measured_by": "SVG geometry and WCAG sRGB calculation; T3 headless preview visual inspection",
+  "five_second_test": {
+    "by": "agent",
+    "date": "2026-10-21",
+    "said": "Six notes have scenario grids, with a central assumption rather than quoted prices",
+    "result": "pass"
+  },
+  "warn_reasons": {
+    "smallest label renders at 14.736842105263158px; check it opened on a phone": "Viewed at 400px; no clipping, and the SVG scales when opened.",
+    "the point renders at 16.842105263157894px; it may not read in the feed unopened": "This is a README result table, not a social-feed image; 400px preview inspected.",
+    "title shares no number or quantifier with the point; does it state the point or name a topic?": "Title spells out six and nine and ends with each."
+  }
+}

@@ -1,0 +1,221 @@
+{
+ "stated_amount": {
+  "value": {
+   "amount": 100,
+   "currency": "USD"
+  },
+  "quote": "\u201c Stated Amount \u201d means one hundred dollars ($100) per share of Perpetual Stretch Preferred Stock.",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "dividend_rate_mechanism": {
+  "value": "variable; company sets Regular Dividend Rate Per Annum in sole discretion by notice; rate period runs from the 16th of a month through the 15th of the next month; otherwise prior rate carries forward",
+  "quote": "a rate per annum equal to the Regular Dividend Rate Per Annum applicable to the Regular Dividend Period immediately preceding such Reference Period, unless the Company elects, in its sole and absolute discretion, by providing notice",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "rate_floor": {
+  "value": {
+   "floor": "Monthly SOFR Per Annum (One-Month Term SOFR) as of business day before notice",
+   "non_negative": true
+  },
+  "quote": "or (iii) less than the Monthly SOFR Per Annum as of the Business Day immediately before the date on which the Company provides such notice.",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "rate_floor_sofr_definition": {
+  "value": "One-Month Term SOFR (CME)",
+  "quote": "\u201c Monthly SOFR Per Annum \u201d means, as of any Business Day, a rate per annum equal to the One-Month Term SOFR, as reflected on the related website of the administrator for term SOFR",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "rate_change_limit": {
+  "value": {
+   "max_reduction_per_period": "0.0025 + decline in Monthly SOFR (from first business day of 3rd preceding period to its minimum through last business day of 2nd preceding period)",
+   "increase_limit": null
+  },
+  "quote": "over (y) the sum of (A) twenty-five (25) basis points; and (B) the excess, if any, of (x) the Monthly SOFR Per Annum on the first Business Day of the third (3rd) Regular Dividend Period",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "rate_reduction_arrears_block": {
+  "value": "no reduction unless all accumulated dividends for prior completed periods are paid",
+  "quote": "the Company will not reduce the Regular Dividend Rate Per Annum pursuant to clause (b) of the preceding sentence unless, at the time the Company provides the notice referred to in such clause, all accumulated Regular Dividends,",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "current_rate_latest_8k": {
+  "value": 0.12,
+  "quote": "management will recommend to the board of directors that the Company maintain STRC\u2019s regular dividend rate per annum at 12.00% until STRC has demonstrated sustained, healthy trading near $100 per share.",
+  "source": "data/raw/edgar/000119312526423400/mstr-20261015.htm"
+ },
+ "current_rate_period": {
+  "value": {
+   "rate": 0.12,
+   "period": "2026-10-16 to 2026-11-15; also Nov 1-30 2026 if daily amendment passes"
+  },
+  "quote": "the applicable dividend rate per annum will be 12.00%, the rate applicable under the Original Amended and Restated STRC Certificate of Designations for the regular dividend period from, and including, October 16, 2026, to, and including, November 15, 2026.",
+  "source": "data/raw/edgar/000119312526413159/d503578ddef14a.htm"
+ },
+ "rate_history": {
+  "value": {
+   "initial_2025_07_29": 0.09,
+   "2026_06": 0.115,
+   "from_record_dates_2026_07_01": 0.12
+  },
+  "quote": "On June 29, 2026, we announced that we will increase the regular dividend rate per annum on our STRC Stock to 12.00%, effective for semi-monthly periods with record dates on or after July 1, 2026.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "rate_history_june_2026": {
+  "value": 0.115,
+  "quote": "The regular dividend rate per annum on STRC Stock for the month ended June 30, 2026 was 11.50 %.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "rate_history_initial": {
+  "value": 0.09,
+  "quote": "with respect to the Regular Dividend Period beginning on the Initial Issue Date, a rate per annum equal to nine percent (9.00%);",
+  "source": "data/raw/edgar/000119312525167987/d43815dex31.htm"
+ },
+ "payment_frequency_and_dates": {
+  "value": {
+   "frequency": "semi-monthly (since 2026-06-30; previously monthly)",
+   "dates": [
+    "15th of each month",
+    "last calendar day of each month"
+   ]
+  },
+  "quote": "\u201c Regular Dividend Payment Date \u201d means, with respect to any share of Perpetual Stretch Preferred Stock, the fifteenth (15th) calendar day of each calendar month and the last calendar day of each calendar month,",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "record_dates": {
+  "value": {
+   "for_15th_payment": "last day of prior month",
+   "for_month_end_payment": "15th of same month"
+  },
+  "quote": "(a) if such Regular Dividend Payment Date occurs on the fifteenth (15th) calendar day of a calendar month, the last calendar day of the prior calendar month; and (b) if such Regular Dividend Payment Date occurs on the last calendar",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "accrual_per_period": {
+  "value": "1/24 of annual rate x stated amount per full semi-monthly period",
+  "quote": "the dollar amount of Regular Dividends that accumulate on one (1) share of Perpetual Stretch Preferred Stock in respect of any full Regular Dividend Period referred to in such proviso will be equal to one-twenty-fourths (1/24th)",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "cumulative": {
+  "value": true,
+  "quote": "The Perpetual Stretch Preferred Stock will accumulate cumulative dividends (\u201c Regular Dividends \u201d) at the rate per annum referred to below on the Stated Amount thereof",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "compounding": {
+  "value": {
+   "compounded": "semi-monthly",
+   "rate": "Regular Dividend Rate Per Annum (no step-up, no cap)"
+  },
+  "quote": "compounded semi-monthly on each subsequent Regular Dividend Payment Date at the Regular Dividend Rate Per Annum applicable to the relevant Regular Dividend Period,",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "payment_form": {
+  "value": "cash only",
+  "quote": "(b) Method of Payment . Each declared Regular Dividend on the Perpetual Stretch Preferred Stock will be paid in cash.",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "conversion": {
+  "value": null,
+  "quote": "Conversion Privilege | None | None | None | Convertible to class A common stock at any time | None |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "optional_redemption": {
+  "value": {
+   "when": "any time on/after Nasdaq/NYSE listing",
+   "scope": "all or any whole number of shares; partial only if >= $250,000,000 aggregate stated amount remains outstanding and uncalled",
+   "price": 101.0,
+   "price_note": "$101 or higher amount chosen by company, plus accumulated and unpaid dividends to and including redemption date",
+   "notice_window": "3 business days to 60 calendar days"
+  },
+  "quote": "in the case of an Optional Redemption, one hundred one dollars ($101.00) (or such higher amount as may be chosen in the Company\u2019s sole discretion,",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "optional_redemption_partial_limit": {
+  "value": 250000000,
+  "quote": "the Company will not redeem less than all of the outstanding shares of the Perpetual Stretch Preferred Stock for Redemption unless at least two hundred fifty million dollars ($250,000,000) aggregate Stated Amount of Perpetual Stretch Preferred Stock is outstanding",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "clean_up_redemption": {
+  "value": {
+   "condition": "outstanding shares < 25% of all shares issued",
+   "price": "liquidation preference as of business day before notice + accumulated and unpaid dividends"
+  },
+  "quote": "at any time if the total number of shares of Perpetual Stretch Preferred Stock then outstanding is less than twenty-five percent (25%) of the total number of shares of the Perpetual Stretch Preferred Stock originally issued",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "tax_redemption": {
+  "value": {
+   "scope": "all, not less than all",
+   "trigger": "Tax Event (fast-pay stock risk)",
+   "price": "liquidation preference + accumulated and unpaid dividends"
+  },
+  "quote": "(B) in the case of a Clean-Up Redemption or Tax Redemption, the Liquidation Preference of such share as of the Business Day before the date the Company provides the related Redemption Notice,",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "fundamental_change_repurchase": {
+  "value": {
+   "price": "stated amount ($100) + accumulated and unpaid regular dividends to, and including, repurchase date"
+  },
+  "quote": "The Fundamental Change Repurchase Price for a share of Perpetual Stretch Preferred Stock to be repurchased upon a Repurchase Upon Fundamental Change following a Fundamental Change will be an amount in cash equal to (i) the Stated Amount of such",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "ranking": {
+  "value": "junior to STRF (Dividend/Liquidation Senior Stock); senior to STRE, STRK, STRD and common",
+  "quote": "Dividend Senior Stock includes the Perpetual Strife Preferred Stock. For the avoidance of doubt, Dividend Senior Stock will not include any securities of the Company\u2019s Subsidiaries.",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "ranking_junior_list": {
+  "value": "STRE, STRK, STRD, Class A, Class B are junior",
+  "quote": "Dividend Junior Stock includes the Class A Common Stock, the Class B Common Stock, the Perpetual Stream Preferred Stock, the Perpetual Strike Preferred Stock and the Perpetual Stride Preferred Stock.",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "ranking_vs_debt": {
+  "value": "junior to all indebtedness ($6.75bn at 2026-06-30)",
+  "quote": "we had approximately $6.75 billion in aggregate principal amount of outstanding indebtedness, all of which ranks senior to our Preferred Stock and our common stock.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "senior_issuance_protection": {
+  "value": "none: creation of senior stock deemed not adverse; no vote required",
+  "quote": "the creation and issuance, or increase in the authorized or issued number, of any class or series of stock (including, for the avoidance of doubt, Dividend Junior Stock, Liquidation Junior Stock, Dividend Parity Stock, Liquidation Parity Stock, Dividend Senior Stock",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "currency": {
+  "value": "USD",
+  "quote": "Variable Rate Series A Perpetual Stretch Preferred Stock, $0.001 par value per share | STRC | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "listing": {
+  "value": "Nasdaq Global Select Market (STRC)",
+  "quote": "Variable Rate Series A Perpetual Stretch Preferred Stock, $0.001 par value per share | STRC | The Nasdaq Global Select Market |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "liquidation_preference_definition": {
+  "value": "initially $100; after each business day = greatest of (a) stated amount; (b) if STRC sold on that day or within prior 10 trading days, last reported sale price on prior trading day; (c) 10-consecutive-trading-day average last reported sale price",
+  "quote": "the Liquidation Preference per share of Perpetual Stretch Preferred Stock will be adjusted to be the greatest of (a) the Stated Amount per share of Perpetual Stretch Preferred Stock; (b) in the case of any Business Day",
+  "source": "data/raw/edgar/000119312526270366/d144149dex31.htm"
+ },
+ "voting_penalty": {
+  "value": {
+   "director_rights": false,
+   "other": "class vote on materially adverse amendments and certain mergers only"
+  },
+  "quote": "Holders of STRC Stock, STRE Stock and STRD Stock do not have the right to elect any directors to the Company\u2019s board of directors upon non-payment of regular dividends.",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "shares_outstanding_2026_06_30": {
+  "value": 104894705,
+  "quote": "Shares Issued as of June 30, 2026 | 12,839,689 | 104,894,705 | 7,750,000 | 14,020,744 | 14,024,221 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "aggregate_liquidation_preference_2026_06_30": {
+  "value": {
+   "amount": 10489471000,
+   "currency": "USD"
+  },
+  "quote": "Aggregate Liquidation Preference as of June 30, 2026 (1) (in thousands) | $ 1,283,969 | $ 10,489,471 | $ 884,120 | $ 1,402,074 | $ 1,402,422 |",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ },
+ "amendment_vs_original": {
+  "value": "A&R CoD effective 2026-06-30 12:01am: monthly -> semi-monthly payment/record dates; 'Monthly Regular Dividend Rate Per Annum' -> 'Regular Dividend Rate Per Annum' set for 16th-to-15th periods; SOFR max-reduction lookback shifted to 3rd/2nd preceding periods; compounding semi-monthly; 1/24 accrual; June 2026 dividend governed by original CoD; authorized shares 28,011,111 -> 282,556,565; STRE added to junior lists",
+  "quote": "Pursuant to the STRC Amendment, beginning on June 30, 2026, the 15th and last day of each month will now be record dates, with the last day of such month and the 15th day of the next month as corresponding",
+  "source": "data/raw/edgar/000105044626000044/mstr-20260630.htm"
+ }
+}
