@@ -2,14 +2,16 @@
 
 Purpose: supply prices and STRK option-volatility proxies without bundling vendor responses or requiring a live feed.
 
-The public example `data/scenarios/market-inputs.json` is independently authored. Prices (MSTR 250 USD, STRF/STRC 100 USD, STRE 100 EUR, STRK 90 USD, STRD 85 USD) and 60%/80% STRK option volatility are **synthetic assumptions**. They are not observed quotes, calibrated inputs or replacements for the original private cache. Contract terms and government-rate observations remain separately sourced.
+The default input `data/market/2026-10-21/closes.json` holds Nasdaq daily closes for MSTR, STRF, STRC, STRK and STRD on October 21, 2026, written by `scripts/fetch_closes.py`. Each close keeps its response URL, retrieval time, byte count and SHA-256, plus a Yahoo Finance cross-check that agrees to the cent. Response bodies stay in ignored `data/local/`. STRE has a null price and an `unavailable` reason: its last Luxembourg Stock Exchange bar with traded volume is January 29, 2026. The STRK option volatilities in that file are authored assumptions.
+
+The example `data/scenarios/market-inputs.json` is independently authored. Prices (MSTR 250 USD, STRF/STRC 100 USD, STRE 100 EUR, STRK 90 USD, STRD 85 USD) and 60%/80% STRK option volatility are **synthetic assumptions**. They are not observed quotes, calibrated inputs or replacements for the original private cache. Contract terms and government-rate observations remain separately sourced.
 
 ## Schema version 1
 
 - `schema_version`: integer 1.
-- `kind`: `synthetic_scenario` or `user_supplied`. A user-supplied file is never independently certified as observed or live by the tool.
+- `kind`: `exchange_close`, `synthetic_scenario` or `user_supplied`. An `exchange_close` price must have `as_of` equal to `valuation_date`, an HTTPS `url`, `fetched_utc` and the response `sha256`. A user-supplied file is never independently certified as observed or live by the tool.
 - `valuation_date`: ISO date on or after `2026-10-21` (the contract-terms snapshot) and before the earliest note maturity. Any date other than 2026-10-21 requires a rates file (below); contract terms stay at the October 21 snapshot.
-- `quotes`: exactly MSTR, STRF, STRC, STRE, STRK and STRD. Each has a positive finite `price`, correct `currency` (STRE EUR, others USD) and `source`.
+- `quotes`: exactly MSTR, STRF, STRC, STRE, STRK and STRD. Each has a positive finite `price`, correct `currency` (STRE EUR, others USD) and `source`. A preferred may instead have `price: null` with a nonempty `unavailable` reason; that row is excluded from yields. MSTR always needs a price.
 - `strk_option_volatility`: positive finite `base` and `sensitivity` values, plus `source`. These feed finite 5/10/20-year call scenarios; they are not a fitted perpetual-option model.
 - `note_assumptions` (optional): per-note `volatility` (decimal, 0.6 = 60%, range 0.01–5), `credit_spread` (decimal, 0.05 = 500 bp, range 0–0.5) and `source`, for any subset of 2028, 2029, 2030A, 2030B, 2031 and 2032. Each supplied pair is valued in `supplied_assumption` beside the unchanged nine-point grid and appears in the terminal summary.
 - Each `source` requires a nonempty `description`, `as_of` (ISO observation date or null), `fetched_utc` (UTC timestamp or null), and an optional HTTPS `url` or null. Synthetic values require null observation dates. Observation dates after valuation are rejected; retrieval may occur later. Include accurate rights/source context in descriptions, never secrets or credential-bearing URLs.
@@ -34,6 +36,6 @@ Install dependencies and restore the public SEC snapshot as in the README. Copy 
 python -m credit_curve.run --market-input /path/to/your-inputs.json --out /path/to/local-results
 ```
 
-All five preferreds, six note schedules, nine note scenarios each, FX arithmetic, option scenarios, numerical benchmarks and evaluation functions remain available. The default demo never fetches market data.
+All five preferred rows, six note schedules, nine note scenarios each, FX arithmetic, option scenarios, numerical benchmarks and evaluation functions remain available. The default demo never fetches market data.
 
 `market.py` retains Nasdaq/Yahoo/Cboe parsers, and `market_fetch.py` retains optional local acquisition helpers for users with a suitable provider basis. `SEC_USER_AGENT` may be required for new SEC requests. These helpers are not invoked by the public demo or CI. Provider endpoints may change, and a latest quote stored in a date-named directory is not historical reconstruction. Review provider terms yourself; this project grants no access or redistribution rights. Provider response patterns and `data/local/` are ignored by Git. Do not commit your local responses, observations or credentials.

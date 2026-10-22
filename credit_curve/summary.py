@@ -92,7 +92,7 @@ def markdown(preferred):
     prices = {'exchange_close': f'are Nasdaq daily closes (`data/market/{inputs["valuation_date"]}/closes.json`)',
               'synthetic_scenario': 'are synthetic, authored inputs, not market quotes',
               'user_supplied': 'are user-supplied'}[inputs['kind']]
-    excluded = ''.join(f' {r["ticker"]}: {r["excluded"]}' for r in preferred['rows'] if r['price'] is None)
+    excluded = ''.join(f' {r["ticker"]} is excluded. {r["excluded"]}' for r in preferred['rows'] if r['price'] is None)
     note = (f'Valuation date {inputs["valuation_date"]}; benchmark rates: {rates}. Prices and the MSTR spot '
             f'({_money(preferred["mstr"]["price"])}) {prices}.{excluded} '
             f'STRK conversion price {_money(strk["conversion_price"])}, parity {_money(strk["conversion_parity"])} '
