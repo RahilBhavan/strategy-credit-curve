@@ -7,7 +7,9 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / 'data/scenarios/market-inputs.json'
+DEFAULT = ROOT / 'data/market/2026-10-21/closes.json'
+SYNTHETIC = ROOT / 'data/scenarios/market-inputs.json'
+KINDS = ('exchange_close', 'synthetic_scenario', 'user_supplied')
 CURRENCIES = {'MSTR': 'USD', 'STRF': 'USD', 'STRC': 'USD', 'STRE': 'EUR', 'STRK': 'USD', 'STRD': 'USD'}
 
 
@@ -24,8 +26,8 @@ def load(path=DEFAULT, rates_path=None):
     data, digest = read_json(path)
     if not isinstance(data, dict) or type(data.get('schema_version')) is not int or data['schema_version'] != 1:
         raise ValueError('market inputs require schema_version 1')
-    if data.get('kind') not in ('synthetic_scenario', 'user_supplied'):
-        raise ValueError('kind must be synthetic_scenario or user_supplied')
+    if data.get('kind') not in KINDS:
+        raise ValueError('kind must be exchange_close, synthetic_scenario or user_supplied')
     day = valuation_date(data.get('valuation_date'), 'market inputs')
     quotes = data.get('quotes')
     if not isinstance(quotes, dict) or set(quotes) != set(CURRENCIES):
@@ -34,8 +36,15 @@ def load(path=DEFAULT, rates_path=None):
         quote = quotes[ticker]
         if not isinstance(quote, dict) or quote.get('currency') != currency:
             raise ValueError(f'{ticker} must be a {currency} quote')
+        if quote.get('price') is None and ticker != 'MSTR':
+            if not isinstance(quote.get('unavailable'), str) or not quote['unavailable'].strip():
+                raise ValueError(f'{ticker} price null requires an unavailable reason')
+            observed_by(quote.get('source'), ticker, data['kind'], day)
+            continue
         validate_positive(quote.get('price'), f'{ticker} price')
         observed_by(quote.get('source'), ticker, data['kind'], day)
+        if data['kind'] == 'exchange_close':
+            exchange_close(quote['source'], ticker, day)
     vols = data.get('strk_option_volatility')
     if not isinstance(vols, dict) or set(vols) != {'base', 'sensitivity', 'source'}:
         raise ValueError('strk_option_volatility requires base, sensitivity and source')
@@ -77,6 +86,14 @@ def observed_by(source, name, kind, day):
                          'set valuation_date to that date and pass --rates for it')
     if kind == 'synthetic_scenario' and source['as_of'] is not None:
         raise ValueError(f'synthetic {name} has no market observation date; use as_of null')
+
+
+def exchange_close(source, name, day):
+    """An exchange close is dated on the valuation date and traceable to the hashed response it came from."""
+    if source['as_of'] != day or source.get('url') is None or source['fetched_utc'] is None:
+        raise ValueError(f'{name} exchange close needs as_of {day}, url and fetched_utc')
+    if not isinstance(source.get('sha256'), str) or not re.fullmatch(r'[0-9a-f]{64}', source['sha256']):
+        raise ValueError(f'{name} exchange close needs the response sha256')
 
 
 def note_assumptions(value, kind, day):
@@ -130,7 +147,7 @@ def validate_source(source, name):
 
 def quote(data, ticker):
     row = data['quotes'][ticker]
-    return {'price': row['price'], 'currency': row['currency'],
+    return {'price': row['price'], 'currency': row['currency'], 'unavailable': row.get('unavailable'),
             'source': {**row['source'], 'kind': data['kind']}}
 
 
@@ -141,8 +158,16 @@ def provenance(data):
             'valuation_date': data['valuation_date'], 'input_sha256': data['input_sha256'],
             'rates': benchmark_rates.provenance(data['rates']),
             'contract_terms_snapshot': TERMS_SNAPSHOT,
-            'interpretation': 'Synthetic prices/volatilities are authored assumptions, not market observations. '
-                              'User-supplied observations remain the responsibility of their supplier.'}
+            'interpretation': INTERPRETATION[data['kind']]}
+
+
+INTERPRETATION = {
+    'exchange_close': 'Prices are exchange daily closes on valuation_date, each with its response URL, retrieval '
+                      'time and SHA-256. A preferred with no trade that day has a null price and is excluded. '
+                      'Option volatilities are authored assumptions.',
+    'synthetic_scenario': 'Synthetic prices/volatilities are authored assumptions, not market observations.',
+    'user_supplied': 'User-supplied observations remain the responsibility of their supplier.',
+}
 
 
 def read_json(path):

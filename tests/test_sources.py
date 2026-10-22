@@ -5,7 +5,7 @@ import math
 import pathlib
 import unittest
 
-from credit_curve import curve, fetch, notes
+from credit_curve import curve, fetch, inputs, notes
 from credit_curve.text import html_to_text, squash
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -54,13 +54,17 @@ class Sources(unittest.TestCase):
         self.assertTrue(all(by[t]['cumulative'] for t in ('STRF', 'STRC', 'STRE', 'STRK')))
         self.assertEqual(by['STRK']['conversion_rate'], 0.1)
         self.assertEqual(by['STRC']['payments_per_year'], 24)
-        self.assertTrue(by['STRE']['price_is_synthetic'])
-        self.assertIsNone(by['STRE']['price_is_stale'])
-        self.assertFalse(any(x['live_ranking_eligible'] for x in r['rows']))
-        self.assertEqual(r['market_inputs']['kind'], 'synthetic_scenario')
+        self.assertEqual(r['market_inputs']['kind'], 'exchange_close')
+        self.assertFalse(any(x['price_is_synthetic'] or x['live_ranking_eligible'] for x in r['rows']))
+        self.assertIsNone(by['STRE']['price'])
+        self.assertTrue(by['STRE']['price_is_stale'])
+        self.assertIn('2026-01-29', by['STRE']['excluded'])
+        self.assertNotIn('effective_yield', by['STRE'])
         self.assertEqual(by['STRE']['currency'], 'EUR')
-        self.assertGreater(by['STRE']['usd_price_at_reference_fx'], 0)
         self.assertIn('pending', r['daily_dividend_amendment'])
-        for x in r['rows']:
-            self.assertTrue(math.isfinite(x['spread_bp']))
+        for t in ('STRF', 'STRC', 'STRK', 'STRD'):
+            self.assertEqual(by[t]['price_source']['as_of'], '2026-10-21')
+            self.assertTrue(math.isfinite(by[t]['spread_bp']))
+        synthetic = {x['ticker']: x for x in curve.build(inputs.load(inputs.SYNTHETIC))['rows']}
+        self.assertGreater(synthetic['STRE']['usd_price_at_reference_fx'], 0)
         self.assertEqual(json.dumps(r, sort_keys=True), json.dumps(curve.build(), sort_keys=True))

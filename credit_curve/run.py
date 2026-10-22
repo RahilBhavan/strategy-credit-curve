@@ -68,7 +68,9 @@ def main():
     (args.out / "preferred.json").write_text(json.dumps(preferred, separators=(",", ":"), allow_nan=False) + "\n")
     (args.out / "convertibles.json").write_text(json.dumps(convertible, default=str, separators=(",", ":"), allow_nan=False) + "\n")
     print(summary.render(preferred, convertible))
-    print(f"Wrote five preferred comparisons and six note scenario grids to {args.out}")
+    priced = sum(r["price"] is not None for r in preferred["rows"])
+    print(f"Wrote {priced} priced preferred comparisons ({len(preferred['rows']) - priced} excluded, no trade) "
+          f"and six note scenario grids to {args.out}")
 
 
 if __name__ == "__main__":

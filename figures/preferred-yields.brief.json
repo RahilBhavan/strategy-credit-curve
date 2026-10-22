@@ -1,0 +1,51 @@
+{
+  "id": "preferred-yields",
+  "reader": "Recruiter or credit analyst skimming the README for 60 seconds",
+  "decision": "See what Strategy's preferreds yield at real market prices, and which pays the most",
+  "point": "At the 21 Oct 2026 close the junior STRD yields the most, 15.0%",
+  "comparison": "Each preferred's effective annual yield against the others in seniority order and against the 30-year Treasury",
+  "title": "Junior STRD yields the most: 15.0%",
+  "form": "bar",
+  "values_count": 5,
+  "accents": 1,
+  "accent_meaning": "title-value",
+  "zero_baseline": true,
+  "estimates": {
+    "present": false
+  },
+  "illustration": false,
+  "sources": [
+    {
+      "title": "Preferred comparison",
+      "url": "../results/preferred.json",
+      "as_of": "2026-10-21"
+    },
+    {
+      "title": "Nasdaq daily closes",
+      "url": "../data/market/2026-10-21/closes.json",
+      "as_of": "2026-10-21"
+    }
+  ],
+  "alt": "Effective annual yield at the 21 Oct 2026 Nasdaq close: STRF 10.03%, STRC 12.82%, STRK 11.42%, STRD 14.96%; STRE excluded (no LuxSE trade since 29 Jan 2026). 30-year Treasury 5.49%.",
+  "sizes_checked": [
+    "760x1002",
+    "400x527"
+  ],
+  "feed_width_viewed": true,
+  "min_label_px": 14.736842105263158,
+  "point_px": 18.94736842105263,
+  "measured_by": "SVG font sizes scaled to 400px; WCAG sRGB contrast of #52545A on #F5F5EF; rsvg-convert renders at 1520px and 400px inspected",
+  "five_second_test": {
+    "by": "agent",
+    "date": "2026-10-22",
+    "said": "STRD pays the most, about 15%, and all four sit well above Treasuries",
+    "result": "pass"
+  },
+  "contrast_min": 6.916424911441444,
+  "shape_reason": "Bar lengths from a zero baseline show each yield's distance from the 30-year Treasury line, which a table does not",
+  "warn_reasons": {
+    "smallest label renders at 14.736842105263158px; check it opened on a phone": "Viewed at 400px; no clipping.",
+    "five-second test": "Agent self-test only; no human reader study is claimed.",
+    "the point renders at 18.94736842105263px; it may not read in the feed unopened": "README hero, not a feed image; 400px render inspected."
+  }
+}

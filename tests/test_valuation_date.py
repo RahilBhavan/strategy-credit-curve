@@ -144,8 +144,8 @@ class ValuationDate(unittest.TestCase):
         self.assertEqual(preferred['as_of'], '2026-10-21')
         self.assertEqual(preferred['market_inputs']['rates'],
                          {'kind': 'frozen_public_snapshot', 'valuation_date': '2026-10-21', 'input_sha256': None})
-        for expected in ('SYNTHETIC', 'MSTR spot $250.00', 'conversion price $1,000.00', 'parity $25.00',
-                         'STRF    $100.00  10.38%', '2029   $672.40'):
+        for expected in ('exchange daily closes', 'MSTR spot $153.48', 'conversion price $1,000.00', 'parity $15.35',
+                         'STRF    $103.42   10.03%', 'STRE    no trade', '2029   $672.40'):
             self.assertIn(expected, text)
 
 
@@ -154,7 +154,8 @@ class ValuationDate(unittest.TestCase):
         block = readme.split('<!-- preferred-summary:start -->\n', 1)[1].split('\n<!-- preferred-summary:end -->', 1)[0]
         saved = json.loads((inputs.ROOT / 'results/preferred.json').read_text())
         self.assertEqual(block, summary.markdown(saved))
-        self.assertIn('Price (synthetic)', block)
+        self.assertIn('Close 2026-10-21', block)
+        self.assertNotIn('synthetic', block)
 
 
 if __name__ == '__main__':

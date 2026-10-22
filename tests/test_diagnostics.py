@@ -20,7 +20,7 @@ class MarketDiagnostics(unittest.TestCase):
         self.market_path = self.root / 'market.json'
         self.mark_path = self.root / 'marks.json'
         self.out = self.root / 'report.json'
-        self.data = json.loads(inputs.DEFAULT.read_text())
+        self.data = json.loads(inputs.SYNTHETIC.read_text())
         self.data['kind'] = 'user_supplied'
         source = {'description': 'Authored test fixture; not an observed market quote',
                   'as_of': '2026-10-21', 'fetched_utc': '2026-10-22T00:30:00Z', 'url': None}
@@ -48,8 +48,14 @@ class MarketDiagnostics(unittest.TestCase):
                 contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
             diagnostics.main()
 
-    def test_default_synthetic_is_diagnostic_only(self):
+    def test_default_closes_flag_untraded_stre_and_keep_dated_mstr(self):
         report = diagnostics.build(inputs.load())
+        self.assertFalse(report['all_inputs_ready'])
+        self.assertEqual(report['coverage']['STRE']['reasons'], ['stale_observation', 'no_observed_price'])
+        self.assertTrue(report['coverage']['MSTR']['usable_for_snapshot_comparison'])
+
+    def test_synthetic_example_is_diagnostic_only(self):
+        report = diagnostics.build(inputs.load(inputs.SYNTHETIC))
         self.assertFalse(report['all_inputs_ready'])
         self.assertEqual(report['coverage']['STRE']['reasons'],
                          ['synthetic_assumption', 'missing_observation_date', 'missing_retrieval_timestamp'])

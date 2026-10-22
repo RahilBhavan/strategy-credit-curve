@@ -1,0 +1,130 @@
+{
+ "schema_version": 1,
+ "kind": "exchange_close",
+ "valuation_date": "2026-10-21",
+ "quotes": {
+  "MSTR": {
+   "price": 153.48,
+   "currency": "USD",
+   "source": {
+    "description": "Nasdaq historical daily close, 2026-10-21; volume 22,587,340 shares. Yahoo Finance daily bar agrees to the cent.",
+    "as_of": "2026-10-21",
+    "url": "https://api.nasdaq.com/api/quote/MSTR/historical?assetclass=stocks&fromdate=2026-10-14&todate=2026-10-21&limit=10",
+    "fetched_utc": "2026-10-22T19:23:34Z",
+    "bytes": 941,
+    "sha256": "89413cc04769d19076f52e49ef9c31dd99aca632beed4013f29afee2fe9849c9",
+    "volume": 22587340,
+    "cross_check": {
+     "close": 153.48,
+     "url": "https://query1.finance.yahoo.com/v8/finance/chart/MSTR?period1=1767225600&period2=1792627200&interval=1d",
+     "fetched_utc": "2026-10-22T19:23:34Z",
+     "bytes": 23131,
+     "sha256": "fa23962246dee4e642e6cefededc3a77bdc990a70e614dfecee77770431814f4"
+    }
+   }
+  },
+  "STRF": {
+   "price": 103.42,
+   "currency": "USD",
+   "source": {
+    "description": "Nasdaq historical daily close, 2026-10-21; volume 45,254 shares. Yahoo Finance daily bar agrees to the cent.",
+    "as_of": "2026-10-21",
+    "url": "https://api.nasdaq.com/api/quote/STRF/historical?assetclass=stocks&fromdate=2026-10-14&todate=2026-10-21&limit=10",
+    "fetched_utc": "2026-10-22T19:23:34Z",
+    "bytes": 919,
+    "sha256": "6435c0737e5736c9b4dd2293cf2ab6a3af081d0d13a1852a35cdaab2a9f6fef4",
+    "volume": 45254,
+    "cross_check": {
+     "close": 103.42,
+     "url": "https://query1.finance.yahoo.com/v8/finance/chart/STRF?period1=1767225600&period2=1792627200&interval=1d",
+     "fetched_utc": "2026-10-22T19:23:34Z",
+     "bytes": 21314,
+     "sha256": "a7d23939107926ce2f51a3dde5fcc78fc12731d00d4feb73d2fe98b57565d537"
+    }
+   }
+  },
+  "STRC": {
+   "price": 99.2,
+   "currency": "USD",
+   "source": {
+    "description": "Nasdaq historical daily close, 2026-10-21; volume 1,370,716 shares. Yahoo Finance daily bar agrees to the cent.",
+    "as_of": "2026-10-21",
+    "url": "https://api.nasdaq.com/api/quote/STRC/historical?assetclass=stocks&fromdate=2026-10-14&todate=2026-10-21&limit=10",
+    "fetched_utc": "2026-10-22T19:23:34Z",
+    "bytes": 909,
+    "sha256": "71bc2fbe94ab56d5d051a9a3dcf6b8db2a776fce26fa59c51158d6a238008914",
+    "volume": 1370716,
+    "cross_check": {
+     "close": 99.2,
+     "url": "https://query1.finance.yahoo.com/v8/finance/chart/STRC?period1=1767225600&period2=1792627200&interval=1d",
+     "fetched_utc": "2026-10-22T19:23:35Z",
+     "bytes": 21603,
+     "sha256": "a6fd5b2e34ed667596c5f6661e2d89c50cca7eb827292e3bb06a109dc565b89b"
+    }
+   }
+  },
+  "STRK": {
+   "price": 73.0,
+   "currency": "USD",
+   "source": {
+    "description": "Nasdaq historical daily close, 2026-10-21; volume 69,732 shares. Yahoo Finance daily bar agrees to the cent.",
+    "as_of": "2026-10-21",
+    "url": "https://api.nasdaq.com/api/quote/STRK/historical?assetclass=stocks&fromdate=2026-10-14&todate=2026-10-21&limit=10",
+    "fetched_utc": "2026-10-22T19:23:35Z",
+    "bytes": 892,
+    "sha256": "a5862aa025b79b517cd4a78f1af18ad824178022a1d11422b58edc7551a2922b",
+    "volume": 69732,
+    "cross_check": {
+     "close": 73.0,
+     "url": "https://query1.finance.yahoo.com/v8/finance/chart/STRK?period1=1767225600&period2=1792627200&interval=1d",
+     "fetched_utc": "2026-10-22T19:23:35Z",
+     "bytes": 20782,
+     "sha256": "a028fe99ac596822cfa4d366866ccf0f78e7e9682216fc76f27f9574f5e91235"
+    }
+   }
+  },
+  "STRD": {
+   "price": 70.5,
+   "currency": "USD",
+   "source": {
+    "description": "Nasdaq historical daily close, 2026-10-21; volume 98,519 shares. Yahoo Finance daily bar agrees to the cent.",
+    "as_of": "2026-10-21",
+    "url": "https://api.nasdaq.com/api/quote/STRD/historical?assetclass=stocks&fromdate=2026-10-14&todate=2026-10-21&limit=10",
+    "fetched_utc": "2026-10-22T19:23:35Z",
+    "bytes": 900,
+    "sha256": "af399c1259227264d54c7f1eb5a0285d60166c1288ac20acaa77a98b2337dbb5",
+    "volume": 98519,
+    "cross_check": {
+     "close": 70.5,
+     "url": "https://query1.finance.yahoo.com/v8/finance/chart/STRD?period1=1767225600&period2=1792627200&interval=1d",
+     "fetched_utc": "2026-10-22T19:23:35Z",
+     "bytes": 20933,
+     "sha256": "614e9854f00899c39400f74945ec22ae708ac94813de8771a74cef8a69c59b75"
+    }
+   }
+  },
+  "STRE": {
+   "price": null,
+   "currency": "EUR",
+   "unavailable": "No 2026-10-21 trade: last STRE.LU bar with traded volume was 2026-01-29 at EUR 84.80 (5,200 shares); every later bar repeats that price on zero volume.",
+   "source": {
+    "description": "Yahoo Finance STRE.LU daily bars (Luxembourg Stock Exchange).",
+    "as_of": "2026-01-29",
+    "url": "https://query1.finance.yahoo.com/v8/finance/chart/STRE.LU?period1=1767225600&period2=1792627200&interval=1d",
+    "fetched_utc": "2026-10-22T19:23:35Z",
+    "bytes": 20916,
+    "sha256": "2b5f65d9e64b07a28870cf595e86dc1f7bc87742bda654c63124a8f51f26128d"
+   }
+  }
+ },
+ "strk_option_volatility": {
+  "base": 0.6,
+  "sensitivity": 0.8,
+  "source": {
+   "description": "Authored assumption, not an observed or implied volatility. It feeds the finite-horizon STRK conversion-call scenarios only.",
+   "as_of": null,
+   "fetched_utc": null,
+   "url": null
+  }
+ }
+}
