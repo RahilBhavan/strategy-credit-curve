@@ -53,6 +53,8 @@ Use the installed virtual environment's Python. This frozen tool supports the Oc
 
 ## Documentation
 
+- [Public design system](DESIGN.md): Rahil Design 3.3.0, shared tokens and visual review rules.
+
 - [Scope](docs/spec.md) — accepted functionality and sanitized publication.
 - [Methodology](docs/methodology.md) — equations, assumptions and omitted features.
 - [Sources](docs/sources.md) — public provenance and data-rights boundary.
