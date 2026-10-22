@@ -58,14 +58,17 @@ def _source(source, name):
     for key in ('as_of', 'fetched_utc'):
         if key not in source:
             raise ValueError(f'{name} source requires {key} (null when unavailable)')
+        if source[key] is not None and not isinstance(source[key], str):
+            raise ValueError(f'{name} source {key} must be a string or null')
     if source['as_of'] is not None:
         dt.date.fromisoformat(source['as_of'])
     if source['fetched_utc'] is not None:
         stamp = dt.datetime.fromisoformat(source['fetched_utc'].replace('Z', '+00:00'))
         if stamp.tzinfo is None or stamp.utcoffset() != dt.timedelta(0):
             raise ValueError('fetched_utc must carry the UTC timezone')
-    if source.get('url') is not None and not source['url'].startswith('https://'):
-        raise ValueError('source URL must use https')
+    if source.get('url') is not None:
+        if not isinstance(source['url'], str) or not source['url'].startswith('https://'):
+            raise ValueError('source URL must be an HTTPS string or null')
 
 
 def quote(data, ticker):

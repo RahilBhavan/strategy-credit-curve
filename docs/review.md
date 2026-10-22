@@ -7,7 +7,12 @@ Scope: the existing v1 at `c016da8`, preserving its source corpus and architectu
 1. **Coupon-date put entitlement was lost after grid rounding.** `credit_curve/convertible.py` replaced coupon-inclusive continuation with principal plus interest recomputed at the rounded node. For face $1,000, coupon 2%, coupon/put at year 0.49 and a two-step one-year tree, that erased a $10 coupon. The new regression failed at $955.9974818331 against the analytic $965.5574566514. Put payoff now freezes accrued entitlement at its contractual date before grid snapping; the regression passes. The sourced 2031 September 15, 2028 put is on a coupon date. All six scenario grids were regenerated; public results were then regenerated again using the explicitly synthetic publication inputs. Exact record-date ownership remains a disclosed limitation.
 2. **Failed downloads returned process success.** `credit_curve/market_fetch.py` printed `FAIL` for a failed source and returned normally. A mocked failed source reproduced `None` rather than a failure status. It now returns 1 if any source fails and passes that status to `sys.exit`. The regression and full suite pass. Existing caches remain untouched when HTTP retries exhaust.
 
-The independent T3 reviewer was read-only and identified the first failure. Parent reproduced it and made the repair. Task ID: `node:delegated-task:command%3Amcp%3A8142576d-8450-4c67-b152-27d45a55929c%3Adelegate-task%3Astrategy-credit-curve-review-1`. No second review round or nested delegation was used.
+Two focused read-only T3 reviews were used: the original numerical/source review and a second review of sanitized input support. Parent reproduced and repaired each surviving finding; no nested delegation was used.
+
+3. **STRC yield-to-call failed for valid extreme prices.** A $25 or $250 user input exceeded the old fixed -50%/+200% IRR bracket and caused a `None` comparison. The solver now brackets log-gross annual rates and evaluates cash-flow PV in log space. Both reproductions failed before the fix, then passed independent cash-flow-PV checks within $0.00000001.
+4. **Malformed provenance bypassed CLI validation.** Numeric `source.url` or `source.fetched_utc` raised `AttributeError`. Type checks now reject these at the input boundary; executable CLI regressions verify exit 2 before output creation.
+5. **The initial hosted reference-output check demanded cross-platform bit equality.** Hosted run 39719643468 failed on approximately 3e-15 of option-value drift while all independent pricing tests passed. Repeated CLI bytes on the same machine remain exact. Saved floating references now use rtol 1e-12 / atol 1e-10; JSON types, keys, text, integer counts and ordering remain exact. Every accepted platform difference is reported with its JSON path/actual/reference/delta (first eight plus the largest), and a checker regression rejects a $0.01 price change and schema/text/count changes. Numerical pricing invariants were not loosened.
+
 
 ## Evidence and discarded candidates
 
@@ -17,7 +22,7 @@ The fetcher's internal paths are constructed by trusted source-fetch code; no un
 
 ## Checks and limits
 
-After both fixes and portable input support, all 36 tests pass on Python 3.13.15 and 3.14.7 with NumPy 2.5.4. New tests cover behavior, not just compilation. Modified functions and direct callers were reread; the final diff was reviewed. The public result changes also reflect the documented switch to synthetic market inputs, rather than an updated market observation.
+After both fixes and portable input support, all 39 tests pass on Python 3.13.15 and 3.14.7 with NumPy 2.5.4. New tests cover behavior, not just compilation. Modified functions and direct callers were reread; the final diff was reviewed. The public result changes also reflect the documented switch to synthetic market inputs, rather than an updated market observation.
 
 The accrual routine still idealizes half-year periods; full 30/360 day counts, record-date ownership, path-dependent triggers, make-whole tables, settlement elections and an external production TF/PDE comparison remain unimplemented. The comparison cannot isolate a noncumulative discount or supply a fitted term structure. Those limits are prominent in the README/methodology.
 

@@ -26,10 +26,28 @@ def yield_to_call(price, annual_dividend, payments_per_year, years_to_call, call
     n = max(1, round(years_to_call * payments_per_year))
     c = annual_dividend / payments_per_year
 
-    def pv(y):
-        per = (1 + y) ** (1 / payments_per_year) - 1
-        return sum(c / (1 + per) ** k for k in range(1, n + 1)) + call_price / (1 + per) ** n - price
-    return bs.bisect(pv, -0.5, 2.0, tol=1e-10)
+    flows = [(k / payments_per_year, c) for k in range(1, n + 1) if c > 0]
+    flows.append((n / payments_per_year, call_price))
+
+    def log_pv(rho):
+        # Work in log-gross annual rates to bracket yields below -50% or above 200%.
+        values = [math.log(cash) - rho * t for t, cash in flows]
+        largest = max(values)
+        return largest + math.log(sum(math.exp(v - largest) for v in values)) - math.log(price)
+
+    lo, hi = -1.0, 1.0
+    for _ in range(64):
+        if log_pv(lo) >= 0 and log_pv(hi) <= 0:
+            rho = bs.bisect(log_pv, lo, hi, tol=1e-13)
+            try:
+                return math.expm1(rho)
+            except OverflowError as error:
+                raise ValueError('yield-to-call exceeds representable annual yield') from error
+        if log_pv(lo) < 0:
+            lo *= 2
+        if log_pv(hi) > 0:
+            hi *= 2
+    raise ValueError('yield-to-call could not be bracketed')
 
 
 def conversion_option(spot, shares_per_pref, conversion_price, years, rate, vol, borrow=0.0):

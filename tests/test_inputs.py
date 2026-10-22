@@ -91,6 +91,28 @@ class PortableInputs(unittest.TestCase):
         self.assertEqual(error.exception.code, 2)
         self.assertFalse(out.exists())
 
+    def test_extreme_strc_prices_have_valid_call_yields(self):
+        for price in (25, 250):
+            with self.subTest(price=price):
+                self.fixture['quotes']['STRC']['price'] = price
+                row = next(r for r in curve.build(self.load(self.fixture))['rows'] if r['ticker'] == 'STRC')
+                y = row['ytc_1y_at_101']
+                pv = sum((12 / 24) / (1 + y)**(k / 24) for k in range(1, 25)) + 101 / (1 + y)
+                self.assertAlmostEqual(pv, price, delta=1e-8)
+
+    def test_malformed_provenance_exits_two_without_output(self):
+        for field in ('url', 'fetched_utc'):
+            with self.subTest(field=field):
+                data = copy.deepcopy(self.fixture)
+                data['quotes']['MSTR']['source'][field] = 123
+                self.path.write_text(json.dumps(data))
+                out = Path(self.tmp.name) / 'absent'
+                with patch('sys.argv', ['credit_curve.run', '--market-input', str(self.path), '--out', str(out)]), \
+                     contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:
+                    run.main()
+                self.assertEqual(error.exception.code, 2)
+                self.assertFalse(out.exists())
+
     def test_impossible_option_adjustment_is_explicit(self):
         self.fixture['quotes']['STRK']['price'] = 1
         with self.assertRaisesRegex(ValueError, 'nonpositive straight-price'):

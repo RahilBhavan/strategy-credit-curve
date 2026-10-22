@@ -4,9 +4,9 @@ Purpose: record tested public behavior, distinct from source observations and mo
 
 ## Reproduction
 
-Use the README commands: install `numpy==2.5.4`, run `scripts/restore_data.py`, run `python -m unittest discover -s tests -v`, then `python -m credit_curve.run` and `python scripts/render_results.py`. The suite passes **36 tests** with Python 3.13.15 and 3.14.7. No provider credentials are used. Tests/demo use no network after package installation.
+Use the README commands: install `numpy==2.5.4`, run `scripts/restore_data.py`, run `python -m unittest discover -s tests -v`, then `python -m credit_curve.run` and `python scripts/render_results.py`. The suite passes **39 tests** with Python 3.13.15 and 3.14.7. No provider credentials are used. Tests/demo use no network after package installation.
 
-The default CLI emits five preferred rows and six nine-scenario grids using **synthetic** market inputs. It records kind, valuation date, input-file hash and per-input observation/retrieval provenance. Public outputs and the SVG are deterministic in the exercised environments. The figure shows grid extrema, not confidence intervals.
+The default CLI emits five preferred rows and six nine-scenario grids using **synthetic** market inputs. It records kind, valuation date, input-file hash and per-input observation/retrieval provenance. Same-environment public outputs and the SVG are byte-repeatable. Across platforms, saved floating references use relative tolerance 1e-12 and absolute tolerance 1e-10, with actual/reference/delta paths printed. JSON types, schema, text, counts and order remain exact. A checker regression rejects meaningful numerical/schema drift; independent analytic invariants remain unchanged. The figure shows grid extrema, not confidence intervals.
 
 ## Evidence exercised
 
@@ -15,6 +15,7 @@ The default CLI emits five preferred rows and six nine-scenario grids using **sy
 - Mocked 429 retry/success writes one verified response and reuses the cache; exhausted 503 retries leave the previous body/manifest unchanged. Failed source acquisition returns exit status 1.
 - The real CLI runs twice with `urlopen` forbidden, matches reviewed public JSON, and validates five rows/six grids/54 scenarios. Invalid step values exit 2 before creating an output directory.
 - Restoration is idempotent on an independently authored fixture, refuses changed data and rejects hash corruption. Actual clean-clone restoration reconstructs the 34 large SEC sources; manifest tests verify all 67 public responses.
+- Additional regressions reprice valid STRC inputs at $25/$250 and verify their yields against independent cash-flow PV; numeric provenance fields must exit 2 before writes.
 - Portable input tests reject malformed schemas, missing instruments, wrong currencies, booleans/nonfinite/nonpositive prices, zero volatility, synthetic observation dates and future observations. User dates remain separate from retrieval timestamps. A custom-input CLI run with MSTR 300 changes the central value for all six notes while remaining offline. Impossible STRK option adjustments fail explicitly.
 
 CI pins immutable checkout/setup-python commits, Python 3.13.15 and NumPy 2.5.4. It uses `contents: read`, no persisted checkout credentials, a ten-minute timeout, restoration, the full offline suite, Python compilation and figure reproduction. No static typechecker is configured in this Python project. No schedules, paid services or deployment run.

@@ -2,6 +2,7 @@
 import contextlib
 import io
 import json
+import math
 from pathlib import Path
 import tempfile
 import unittest
@@ -24,11 +25,49 @@ class OfflineWorkflow(unittest.TestCase):
             run.main()
             self.assertEqual(first, {p.name: p.read_bytes() for p in Path(tmp).glob('*.json')})
             for name, body in first.items():
-                self.assertEqual(json.loads(body), json.loads((ROOT / 'results' / name).read_bytes()))
+                differences = []
+                self.assert_reference(json.loads(body), json.loads((ROOT / 'results' / name).read_bytes()),
+                                      name, differences)
+                if differences:
+                    print(f'\n{name}: {len(differences)} platform float differences within rtol=1e-12/atol=1e-10')
+                    for path, actual, expected in differences[:8]:
+                        print(f'{path}: actual={actual:.17g}, reference={expected:.17g}, delta={actual-expected:.3g}')
+                    largest = max(differences, key=lambda d: abs(d[1] - d[2]))
+                    print(f'Largest absolute delta: {largest[0]} = {abs(largest[1]-largest[2]):.3g}')
             self.assertEqual(len(json.loads(first['preferred.json'])['rows']), 5)
             notes = json.loads(first['convertibles.json'])['notes']
             self.assertEqual(len(notes), 6)
             self.assertTrue(all(len(n['scenarios']) == 9 for n in notes))
+
+    def assert_reference(self, actual, expected, path, differences):
+        self.assertIs(type(actual), type(expected), f'{path}: JSON type changed')
+        if isinstance(actual, dict):
+            self.assertEqual(actual.keys(), expected.keys(), f'{path}: keys changed')
+            for key in actual:
+                self.assert_reference(actual[key], expected[key], f'{path}.{key}', differences)
+        elif isinstance(actual, list):
+            self.assertEqual(len(actual), len(expected), f'{path}: count changed')
+            for i, (left, right) in enumerate(zip(actual, expected)):
+                self.assert_reference(left, right, f'{path}[{i}]', differences)
+        elif isinstance(actual, float):
+            self.assertTrue(math.isfinite(actual) and math.isfinite(expected), f'{path}: nonfinite value')
+            self.assertTrue(math.isclose(actual, expected, rel_tol=1e-12, abs_tol=1e-10),
+                            f'{path}: actual={actual:.17g}, reference={expected:.17g}, delta={actual-expected:.3g}')
+            if actual != expected:
+                differences.append((path, actual, expected))
+        else:
+            self.assertEqual(actual, expected, f'{path}: exact value changed')
+
+    def test_reference_check_rejects_meaningful_numeric_and_schema_changes(self):
+        differences = []
+        self.assert_reference({'price': math.nextafter(1000.0, math.inf)}, {'price': 1000.0}, '$', differences)
+        self.assertEqual(len(differences), 1)
+        for actual, expected in (({'price': 1000.01}, {'price': 1000.0}),
+                                 ({'price': 1000}, {'price': 1000.0}),
+                                 ({'kind': 'observed'}, {'kind': 'synthetic'}),
+                                 ({'rows': [1]}, {'rows': [1, 2]})):
+            with self.subTest(actual=actual), self.assertRaises(AssertionError):
+                self.assert_reference(actual, expected, '$', [])
 
     def test_invalid_steps_exit_before_writing_results(self):
         with tempfile.TemporaryDirectory() as tmp:
