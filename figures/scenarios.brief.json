@@ -41,6 +41,7 @@
   "warn_reasons": {
     "smallest label renders at 14.736842105263158px; check it opened on a phone": "Viewed at 400px; no clipping, and the SVG scales when opened.",
     "the point renders at 16.842105263157894px; it may not read in the feed unopened": "This is a README result table, not a social-feed image; 400px preview inspected.",
-    "title shares no number or quantifier with the point; does it state the point or name a topic?": "Title spells out six and nine and ends with each."
+    "title shares no number or quantifier with the point; does it state the point or name a topic?": "Title spells out six and nine and ends with each.",
+    "five-second test": "Agent self-test only. No independent human comprehension study or feed-readability claim is made."
   }
 }
