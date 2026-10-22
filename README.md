@@ -1,5 +1,7 @@
 # Strategy credit comparison: five preferreds and six convertible-note scenarios
 
+[![Offline verification](https://github.com/RahilBhavan/strategy-credit-curve/actions/workflows/ci.yml/badge.svg)](https://github.com/RahilBhavan/strategy-credit-curve/actions/workflows/ci.yml)
+
 ![Six notes priced under nine assumed volatility/spread combinations each, using synthetic stock prices; results are USD per $1,000 face, not market quotes.](figures/scenarios.svg)
 
 An offline Python research tool compares Strategy's five preferred securities and prices six convertible schedules with a Tsiveriotis–Fernandes (TF) tree. Contract terms and government-rate inputs use a frozen October 21, 2026 research snapshot. The public demo uses **independently authored synthetic stock prices and volatility proxies**, with no claim that they were observed in the market. Supply your own dated inputs through a validated JSON file.
