@@ -42,12 +42,12 @@ Tested with Python 3.13.15 and 3.14.7 and NumPy 2.5.4. No API keys or paid servi
 ```bash
 git clone https://github.com/RahilBhavan/strategy-credit-curve.git
 cd strategy-credit-curve
-python3 -m venv "$HOME/scratch/strategy-credit-curve/venv"
-"$HOME/scratch/strategy-credit-curve/venv/bin/python" -m pip install -r requirements.txt
-"$HOME/scratch/strategy-credit-curve/venv/bin/python" scripts/restore_data.py
-"$HOME/scratch/strategy-credit-curve/venv/bin/python" -m unittest discover -s tests -v
-"$HOME/scratch/strategy-credit-curve/venv/bin/python" -m credit_curve.run
-"$HOME/scratch/strategy-credit-curve/venv/bin/python" scripts/render_results.py
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python scripts/restore_data.py
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python -m credit_curve.run
+.venv/bin/python scripts/render_results.py
 ```
 
 Restoration rebuilds 34 public SEC source files and checks their hashes. The demo prints a summary table (preferred yields and spreads, MSTR spot, STRK and note conversion prices and parity, note values) and writes the preferred comparison and six nine-scenario note grids to `results/`. The figures and the README table are regenerated from those results. `--out <directory>` changes the output folder, and `--steps 1200` changes the default 600-step tree.
