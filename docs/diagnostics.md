@@ -1,13 +1,13 @@
 # Five-minute input diagnostics
 
-The default example stays synthetic. Inspect it without network calls:
+The default input is the frozen October 21, 2026 Nasdaq close file. Inspect it without network calls:
 
 ```bash
 python -m credit_curve.diagnostics --out results/local/diagnostics.json
 python -m credit_curve.diagnostics --out results/local/diagnostics.json --require-complete
 ```
 
-The first command writes a deterministic diagnostic report. The second writes the same report and exits **3**, because synthetic assumptions and absent note marks cannot establish complete observed coverage. Invalid files exit **2** before writing output. Use the environment described in the README.
+The first command writes a deterministic diagnostic report. The second writes the same report and exits **3**, because STRE has no observed price, the STRK option volatilities are undated assumptions and no note marks are supplied. Invalid files exit **2** before writing output. Use the environment described in the README.
 
 For your own authorized data, supply `--market-input /path/to/market.json` and optionally `--note-marks /path/to/marks.json`. The market schema is documented in [market inputs](market-inputs.md). Note marks use this separate schema (only supported note names may appear):
 

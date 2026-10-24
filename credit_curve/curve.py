@@ -90,6 +90,11 @@ def build(inputs=None):
         observation = q['source']['as_of']
         row['price_is_stale'] = None if observation is None else observation < inputs['valuation_date']
         row['live_ranking_eligible'] = False  # No supplied file is independently verified as a live feed.
+        row['benchmark'] = "ECB AAA euro-area 30y spot" if tk == "STRE" else "UST 30y par"
+        row['benchmark_effective'] = b["eur30" if tk == "STRE" else "ust30"]["effective"]
+        if q['price'] is None:
+            row['excluded'] = q['unavailable']
+            continue
         if tk == 'STRE':
             fx = b['eurusd']['rate']
             row['usd_price_at_reference_fx'] = row['price'] * fx
@@ -99,12 +104,6 @@ def build(inputs=None):
         P, D, m = row["price"], row["annual_dividend"], row["payments_per_year"]
         row["current_yield"] = preferred.current_yield(D, P)
         row["effective_yield"] = preferred.effective_annual(D, P, m)
-        if tk == "STRE":
-            row["benchmark"] = "ECB AAA euro-area 30y spot"
-            row["benchmark_effective"] = b["eur30"]["effective"]
-        else:
-            row["benchmark"] = "UST 30y par"
-            row["benchmark_effective"] = b["ust30"]["effective"]
         row["spread_bp"] = 1e4 * (row["effective_yield"] - row["benchmark_effective"])
         if tk == "STRC":
             row["spread_vs_sofr_bp"] = 1e4 * (row["effective_yield"] - b["sofr"]["effective"])

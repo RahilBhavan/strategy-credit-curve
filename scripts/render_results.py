@@ -7,6 +7,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from credit_curve import summary  # noqa: E402  (stdlib-only module; no numpy needed)
+import render_yields  # noqa: E402
 
 START, END = '<!-- preferred-summary:start -->', '<!-- preferred-summary:end -->'
 
@@ -16,7 +17,7 @@ def render():
     data = json.loads(source.read_text())
     svg = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 940" role="img" aria-labelledby="title desc">',
            '<title id="title">Six notes, nine model values each</title>',
-           '<desc id="desc">Model scenario minima, central assumptions and maxima per $1,000 face. These are not market quotes or confidence intervals.</desc>',
+           '<desc id="desc">Model scenario minima, central assumptions and maxima per $1,000 face. Inputs: MSTR exchange close and an assumed volatility/spread grid. These are not note quotes or confidence intervals.</desc>',
            '<rect width="760" height="940" fill="#F5F5EF"/>',
            '<g font-family="IBM Plex Sans, Arial, sans-serif" fill="#111214">']
 
@@ -25,7 +26,7 @@ def render():
 
     text(32, 46, 'RAHIL BHAVAN / BUILD NOTES', 28, fill='#52545A')
     text(32, 104, 'Six notes, nine model values each', 32, weight='600')
-    text(32, 150, 'Synthetic inputs • USD per $1,000 face', 28)
+    text(32, 150, f'MSTR close ${data["spot"]:,.2f} • USD per $1,000 face', 28)
     text(32, 192, 'Contract/rate snapshot: 21 Oct 2026', 28, fill='#52545A')
     svg.append('<rect x="431" y="216" width="152" height="410" fill="#FFE500"/>')
     for x, label in ((32, 'Note'), (403, 'Low'), (557, 'Central*'), (718, 'High')):
@@ -45,7 +46,7 @@ def render():
     text(32, 759, 'Low/high are grid extrema, not probabilities.', 28)
     text(32, 801, '600 steps; simplified exercise triggers.', 28, fill='#52545A')
     text(32, 843, 'Source: results/convertibles.json', 28, fill='#52545A')
-    text(32, 885, 'Synthetic prices/vols; not market quotes.', 28, fill='#52545A')
+    text(32, 885, 'Assumed vol/spread; not note quotes.', 28, fill='#52545A')
     text(32, 927, 'Method: docs/methodology.md', 28, fill='#52545A')
     svg.extend(['</g>', '</svg>'])
     target = ROOT / 'figures/scenarios.svg'
@@ -63,4 +64,5 @@ def render():
 
 
 if __name__ == '__main__':
+    render_yields.render()
     render()

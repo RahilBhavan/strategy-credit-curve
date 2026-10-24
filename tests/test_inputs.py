@@ -13,7 +13,7 @@ from credit_curve import curve, inputs, run
 
 class PortableInputs(unittest.TestCase):
     def setUp(self):
-        self.fixture = json.loads(inputs.DEFAULT.read_text())
+        self.fixture = json.loads(inputs.SYNTHETIC.read_text())
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.path = Path(self.tmp.name) / 'inputs.json'
@@ -48,6 +48,19 @@ class PortableInputs(unittest.TestCase):
             data = copy.deepcopy(self.fixture)
             change(data)
             with self.subTest(change=change), self.assertRaises(ValueError):
+                self.load(data)
+
+    def test_exchange_closes_are_dated_hashed_and_explain_gaps(self):
+        closes = json.loads(inputs.DEFAULT.read_text())
+        self.assertEqual(self.load(closes)['kind'], 'exchange_close')
+        changes = [(lambda d: d['quotes']['STRF']['source'].update(as_of='2026-10-20'), 'needs as_of 2026-10-21'),
+                   (lambda d: d['quotes']['STRF']['source'].pop('sha256'), 'response sha256'),
+                   (lambda d: d['quotes']['STRE'].pop('unavailable'), 'unavailable reason'),
+                   (lambda d: d['quotes']['MSTR'].update(price=None), 'MSTR price must be finite')]
+        for change, message in changes:
+            data = copy.deepcopy(closes)
+            change(data)
+            with self.subTest(message=message), self.assertRaisesRegex(ValueError, message):
                 self.load(data)
 
     def test_user_supplied_dates_and_sources_remain_separate(self):

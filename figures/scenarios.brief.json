@@ -3,7 +3,7 @@
   "reader": "Recruiter or research engineer reviewing the offline model",
   "decision": "Inspect scenario sensitivity without mistaking assumptions for market prices",
   "point": "Each of six notes is priced under nine assumptions",
-  "comparison": "Each note across volatility/spread assumptions with synthetic stock prices and a labeled central case",
+  "comparison": "Each note across volatility/spread assumptions at the 21 Oct 2026 MSTR close, with a labeled central case",
   "title": "Six notes, nine model values each",
   "form": "table",
   "values_count": 18,
@@ -22,7 +22,7 @@
       "as_of": "2026-10-21"
     }
   ],
-  "alt": "All six notes have nine TF scenario model values each using synthetic market inputs; central prices range from $884.47 to $1,713.85 per $1,000 face. Not market quotes.",
+  "alt": "All six notes have nine TF scenario model values each at the 21 Oct 2026 MSTR close of $153.48 and an assumed volatility/spread grid; central values range from $860.67 to $1,197.15 per $1,000 face. Not note quotes.",
   "sizes_checked": [
     "760x940",
     "400x495"

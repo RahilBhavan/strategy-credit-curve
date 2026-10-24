@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1002" role="img" aria-labelledby="title desc">
+<title id="title">Junior STRD yields the most: 15.0%</title>
+<desc id="desc">Effective annual yield of Strategy preferreds at the 21 Oct 2026 Nasdaq close, in seniority order: STRF 10.03%; STRC 12.82%; STRE excluded, no trade; STRK 11.42%; STRD 14.96%. 30-year Treasury par yield 5.49% effective.</desc>
+<rect width="760" height="1002" fill="#F5F5EF"/>
+<g font-family="IBM Plex Sans, Arial, sans-serif" fill="#111214">
+<text x="32.0" y="46" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">RAHIL BHAVAN / BUILD NOTES</text>
+<text x="32.0" y="96" font-size="36" text-anchor="start" font-weight="600" fill="#111214">Junior STRD yields the most: 15.0%</text>
+<text x="32.0" y="140" font-size="28" text-anchor="start" font-weight="400" fill="#111214">Effective annual yield at the 21 Oct 2026 close</text>
+<text x="32.0" y="178" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Senior at top, junior at bottom (filing order)</text>
+<path d="M150.0 206V726" stroke="#111214" stroke-width="2"/>
+<text x="32.0" y="248" font-size="28" text-anchor="start" font-weight="600" fill="#111214">STRF</text>
+<path d="M273.6 214V266" stroke="#52545A" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="150.0" y="222" width="225.6" height="36" fill="#52545A"/>
+<text x="385.6" y="250" font-size="28" text-anchor="start" font-weight="400" fill="#111214">10.03%</text>
+<text x="160.0" y="294" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">$103.42 close · cumulative</text>
+<text x="32.0" y="352" font-size="28" text-anchor="start" font-weight="600" fill="#111214">STRC</text>
+<path d="M273.6 318V370" stroke="#52545A" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="150.0" y="326" width="288.6" height="36" fill="#52545A"/>
+<text x="448.6" y="354" font-size="28" text-anchor="start" font-weight="400" fill="#111214">12.82%</text>
+<text x="160.0" y="398" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">$99.20 close · 12% rate, reset monthly</text>
+<text x="32.0" y="456" font-size="28" text-anchor="start" font-weight="600" fill="#111214">STRE</text>
+<text x="164.0" y="456" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">No trade on 21 Oct 2026; excluded</text>
+<text x="164.0" y="494" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">LuxSE, EUR; last trade 29 Jan 2026</text>
+<text x="32.0" y="560" font-size="28" text-anchor="start" font-weight="600" fill="#111214">STRK</text>
+<path d="M273.6 526V578" stroke="#52545A" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="150.0" y="534" width="256.9" height="36" fill="#52545A"/>
+<text x="416.9" y="562" font-size="28" text-anchor="start" font-weight="400" fill="#111214">11.42%</text>
+<text x="160.0" y="606" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">$73.00 close · also converts to MSTR</text>
+<text x="32.0" y="664" font-size="28" text-anchor="start" font-weight="600" fill="#111214">STRD</text>
+<path d="M273.6 630V682" stroke="#52545A" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="150.0" y="638" width="336.5" height="36" fill="#FFE500" stroke="#111214" stroke-width="2"/>
+<text x="496.5" y="666" font-size="28" text-anchor="start" font-weight="600" fill="#111214">14.96%</text>
+<text x="160.0" y="710" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">$70.50 close · noncumulative</text>
+<path d="M273.6 732V760" stroke="#52545A" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="281.6" y="756" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">30-year Treasury 5.49%</text>
+<text x="150.0" y="756" font-size="28" text-anchor="middle" font-weight="400" fill="#52545A">0%</text>
+<text x="32.0" y="802" font-size="28" text-anchor="start" font-weight="400" fill="#111214">Range 10.0% (STRF) to 15.0% (STRD); bars start at 0%.</text>
+<text x="32.0" y="844" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Yield: stated dividend over the close,</text>
+<text x="32.0" y="886" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">compounded at each payment frequency.</text>
+<text x="32.0" y="928" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Closes: Nasdaq, data/market/2026-10-21.</text>
+<text x="32.0" y="970" font-size="28" text-anchor="start" font-weight="400" fill="#52545A">Source: results/preferred.json</text>
+</g>
+</svg>

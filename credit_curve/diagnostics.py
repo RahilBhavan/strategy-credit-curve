@@ -58,6 +58,10 @@ def build(data, marks=None, steps=600):
     day, kind = data['valuation_date'], data['kind']
     coverage = {ticker: {**assess(q['source'], kind, day), 'price': q['price'], 'currency': q['currency']}
                 for ticker, q in data['quotes'].items()}
+    for item in coverage.values():
+        if item['price'] is None:
+            item['reasons'].append('no_observed_price')
+            item['usable_for_snapshot_comparison'] = False
     coverage['strk_option_volatility'] = assess(data['strk_option_volatility']['source'], kind, day)
     note_rows = []
     supplied = {} if marks is None else marks['marks']
