@@ -25,7 +25,7 @@ Valuation date 2026-10-21; benchmark rates: frozen public snapshot. Prices and t
 <!-- preferred-summary:end -->
 
 - STRD, the most junior and the only noncumulative preferred, yields the most: 14.96% at a $70.50 close. STRF, the most senior, yields the least: 10.03% at $103.42.
-- STRE is excluded. It trades only on the Luxembourg Stock Exchange in euros, and its last bar with traded volume is January 29, 2026 (`data/market/2026-10-21/closes.json`).
+- STRE is excluded. It trades only on the Luxembourg Stock Exchange in euros, and its last bar with traded volume is January 29, 2026 (`data/market/2026-10-21/closes.json`). Rechecked against Yahoo's STRE.LU bars on October 24, 2026: still no later volume ([`docs/sources.md`](docs/sources.md#stre-and-contract-follow-up)).
 - Six notes × nine volatility/spread combinations = **54 model scenarios** (`results/convertibles.json`). At the $153.48 MSTR close and the central 60% volatility / 5% spread assumptions, values range from **$860.67 (2029) to $1,197.15 (2030A) per $1,000 face**. These are model values, not note quotes.
 - **60 tests pass**. They cover source hashes and quotations, split-adjusted terms, independent analytic TF limits, convergence, coupon-date puts, offline CLI behavior, exchange-close provenance, portable inputs, user valuation dates and rates files, per-note assumptions and fetch retries.
 
